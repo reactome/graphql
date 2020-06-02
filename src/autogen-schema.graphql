@@ -1,0 +1,1152 @@
+# These typedefs were auto-generated using 'inferSchema' feature of neo4j-graphql-js library.
+# This file has no role in the development/production of Reactome GraphQL API.
+# Hence, if this file is deleted/removed, then the final API is not affected in any way.
+
+# TYPEDEFS:
+
+type DatabaseObject_Event_Pathway {
+  _id: Long!
+  dbId: Int!
+  definition: String
+  diagramHeight: Int
+  diagramWidth: Int
+  displayName: String!
+  doi: String
+  hasDiagram: Boolean!
+  hasEHLD: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  releaseStatus: String
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type Complex_DatabaseObject_PhysicalEntity {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  speciesName: String
+  stId: String!
+  stIdVersion: String!
+  stoichiometryKnown: Boolean
+  systematicName: String
+}
+
+type DatabaseObject_GenomeEncodedEntity_PhysicalEntity {
+  _id: Long!
+  dbId: Int!
+  definition: String
+  displayName: String!
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type AbstractModifiedResidue_CrosslinkedResidue_DatabaseObject_InterChainCrosslinkedResidue_TranslationalModification {
+  _id: Long!
+  coordinate: Int
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+  secondCoordinate: Int
+}
+
+type AbstractModifiedResidue_DatabaseObject_GroupModifiedResidue_TranslationalModification {
+  _id: Long!
+  coordinate: Int
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+}
+
+type DatabaseObject_ReferenceEntity_ReferenceGeneProduct_ReferenceSequence {
+  _id: Long!
+  chain: [String]
+  checksum: String
+  comment: [String]
+  databaseName: String!
+  dbId: Int!
+  description: [String]
+  displayName: String!
+  geneName: [String]
+  identifier: String!
+  isSequenceChanged: Boolean
+  keyword: [String]
+  name: [String]
+  otherIdentifier: [String]
+  schemaClass: String!
+  secondaryIdentifier: [String]
+  sequenceLength: Int
+  url: String!
+}
+
+type ChemicalDrug_DatabaseObject_Drug_PhysicalEntity {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type DatabaseObject_NegativeRegulation_Regulation {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  oldStId: String
+  schemaClass: String!
+  stId: String
+  stIdVersion: String
+}
+
+type DatabaseObject_EntityFunctionalStatus {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+}
+
+type DatabaseObject_FunctionalStatus {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+}
+
+type DatabaseObject_FunctionalStatusType {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+}
+
+type AbstractModifiedResidue_DatabaseObject_ModifiedResidue_TranslationalModification {
+  _id: Long!
+  coordinate: Int
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+}
+
+type DatabaseObject_LiteratureReference_Publication {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  journal: String!
+  pages: String
+  pubMedIdentifier: Int
+  schemaClass: String!
+  title: String!
+  volume: Int
+  year: Int!
+}
+
+type DatabaseObject_ReferenceEntity_ReferenceMolecule {
+  _id: Long!
+  databaseName: String!
+  dbId: Int!
+  displayName: String!
+  formula: String
+  geneName: [String]
+  identifier: String!
+  name: [String]!
+  otherIdentifier: [String]
+  schemaClass: String!
+  secondaryIdentifier: [String]
+  trivial: Boolean
+  url: String!
+}
+
+type DatabaseObject_Event_Pathway_TopLevelPathway {
+  _id: Long!
+  dbId: Int!
+  diagramHeight: Int!
+  diagramWidth: Int!
+  displayName: String!
+  doi: String
+  hasDiagram: Boolean!
+  hasEHLD: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  releaseStatus: String
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type DatabaseObject_PhysicalEntity_SimpleEntity {
+  _id: Long!
+  dbId: Int!
+  definition: String
+  displayName: String!
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  referenceType: String!
+  schemaClass: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type DatabaseObject_Species_Taxon {
+  _id: Long!
+  abbreviation: String!
+  dbId: Int!
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+  taxId: String!
+}
+
+type ControlReference_DatabaseObject_RegulationReference {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+}
+
+type DatabaseObject_Interaction_UndirectedInteraction {
+  _id: Long!
+  accession: [String]!
+  databaseName: String!
+  dbId: Int!
+  displayName: String!
+  pubmed: [String]
+  schemaClass: String!
+  score: Float!
+  url: String!
+}
+
+type DatabaseObject_PhysicalEntity_Polymer {
+  _id: Long!
+  dbId: Int!
+  definition: String
+  displayName: String!
+  isInDisease: Boolean!
+  maxUnitCount: Int
+  minUnitCount: Int
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  speciesName: String
+  stId: String!
+  stIdVersion: String!
+}
+
+type DatabaseObject_Disease_ExternalOntology {
+  _id: Long!
+  databaseName: String!
+  dbId: Int!
+  definition: String
+  displayName: String!
+  identifier: String!
+  name: [String]!
+  schemaClass: String!
+  synonym: [String]
+  url: String!
+}
+
+type DatabaseObject_ReferenceDNASequence_ReferenceEntity_ReferenceSequence {
+  _id: Long!
+  comment: [String]
+  databaseName: String!
+  dbId: Int!
+  description: [String]
+  displayName: String!
+  geneName: [String]
+  identifier: String!
+  keyword: [String]
+  name: [String]
+  otherIdentifier: [String]
+  schemaClass: String!
+  sequenceLength: Int
+  url: String!
+}
+
+type AbstractModifiedResidue_CrosslinkedResidue_DatabaseObject_IntraChainCrosslinkedResidue_TranslationalModification {
+  _id: Long!
+  coordinate: Int!
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+  secondCoordinate: Int
+}
+
+type DatabaseObject_Event_Reaction_ReactionLikeEvent {
+  _id: Long!
+  dbId: Int!
+  definition: String
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  releaseStatus: String
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type DBInfo {
+  _id: Long!
+  checksum: Int!
+  name: String!
+  version: Int!
+}
+
+type AbstractModifiedResidue_DatabaseObject_FragmentDeletionModification_FragmentModification_GeneticallyModifiedResidue {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  endPositionInReferenceSequence: Int!
+  schemaClass: String!
+  startPositionInReferenceSequence: Int!
+}
+
+type DatabaseObject_ExternalOntology_SequenceOntology {
+  _id: Long!
+  databaseName: String!
+  dbId: Int!
+  definition: String!
+  displayName: String!
+  identifier: String!
+  name: [String]!
+  schemaClass: String!
+  synonym: [String]!
+  url: String!
+}
+
+type DatabaseObject_ReferenceEntity_ReferenceGroup {
+  _id: Long!
+  databaseName: String!
+  dbId: Int!
+  displayName: String!
+  formula: String
+  identifier: String!
+  name: [String]!
+  schemaClass: String!
+  url: String!
+}
+
+type DatabaseObject_OtherEntity_PhysicalEntity {
+  _id: Long!
+  dbId: Int!
+  definition: String
+  displayName: String!
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type DatabaseObject_NegativeGeneExpressionRegulation_NegativeRegulation_Regulation {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  oldStId: String
+  schemaClass: String!
+  stId: String
+  stIdVersion: String
+}
+
+type DatabaseObject_ReferenceEntity_ReferenceTherapeutic {
+  _id: Long!
+  abbreviation: String
+  approvalSource: [String]
+  approved: Boolean!
+  databaseName: String!
+  dbId: Int!
+  displayName: String!
+  identifier: String!
+  inn: String
+  name: [String]!
+  schemaClass: String!
+  type: String
+  url: String!
+}
+
+type Book_DatabaseObject_Publication {
+  _id: Long!
+  ISBN: String
+  chapterTitle: String
+  dbId: Int!
+  displayName: String!
+  pages: String
+  schemaClass: String!
+  title: String!
+  year: Int!
+}
+
+type DatabaseObject_ReferenceEntity_ReferenceRNASequence_ReferenceSequence {
+  _id: Long!
+  comment: [String]
+  databaseName: String!
+  dbId: Int!
+  description: [String]
+  displayName: String!
+  geneName: [String]
+  identifier: String!
+  name: [String]
+  schemaClass: String!
+  url: String!
+}
+
+type DatabaseObject_GO_CellularComponent_GO_Term {
+  _id: Long!
+  accession: String!
+  databaseName: String!
+  dbId: Int!
+  definition: String!
+  displayName: String!
+  name: String!
+  schemaClass: String!
+  url: String!
+}
+
+type DatabaseObject_EntityWithAccessionedSequence_GenomeEncodedEntity_PhysicalEntity {
+  _id: Long!
+  dbId: Int!
+  definition: String
+  displayName: String!
+  endCoordinate: Int
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  referenceType: String!
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  startCoordinate: Int
+}
+
+type CandidateSet_DatabaseObject_EntitySet_PhysicalEntity {
+  _id: Long!
+  dbId: Int!
+  definition: String
+  displayName: String!
+  isInDisease: Boolean!
+  isOrdered: Boolean
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  speciesName: String
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type BlackBoxEvent_DatabaseObject_Event_ReactionLikeEvent {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  releaseStatus: String
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type DatabaseObject_Publication_URL {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+  title: String!
+  uniformResourceLocator: String!
+}
+
+type CatalystActivityReference_ControlReference_DatabaseObject {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+}
+
+type DatabaseObject_Event_Polymerisation_ReactionLikeEvent {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type DatabaseObject_Depolymerisation_Event_ReactionLikeEvent {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type DatabaseObject_Taxon {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+  taxId: String
+}
+
+type DatabaseObject_DefinedSet_EntitySet_PhysicalEntity {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  isInDisease: Boolean!
+  isOrdered: Boolean
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  speciesName: String
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type DatabaseObject_Person {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  firstname: String
+  initial: String!
+  orcidId: String
+  project: String
+  schemaClass: String!
+  surname: String!
+}
+
+type AbstractModifiedResidue_DatabaseObject_FragmentInsertionModification_FragmentModification_GeneticallyModifiedResidue {
+  _id: Long!
+  coordinate: Int
+  dbId: Int!
+  displayName: String!
+  endPositionInReferenceSequence: Int!
+  schemaClass: String!
+  startPositionInReferenceSequence: Int!
+}
+
+type AbstractModifiedResidue_DatabaseObject_GeneticallyModifiedResidue_ReplacedResidue {
+  _id: Long!
+  coordinate: Int!
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+}
+
+type AbstractModifiedResidue_DatabaseObject_FragmentModification_FragmentReplacedModification_GeneticallyModifiedResidue {
+  _id: Long!
+  alteredAminoAcidFragment: String
+  dbId: Int!
+  displayName: String!
+  endPositionInReferenceSequence: Int!
+  schemaClass: String!
+  startPositionInReferenceSequence: Int!
+}
+
+type DatabaseIdentifier_DatabaseObject {
+  _id: Long!
+  databaseName: String!
+  dbId: Int!
+  displayName: String!
+  identifier: String!
+  schemaClass: String!
+  url: String!
+}
+
+type DatabaseObject_ReferenceDatabase {
+  _id: Long!
+  accessUrl: String!
+  dbId: Int!
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+  url: String!
+}
+
+type DatabaseObject_InstanceEdit {
+  _id: Long!
+  dateTime: String!
+  dbId: Int!
+  displayName: String!
+  note: String
+  schemaClass: String!
+}
+
+type Affiliation_DatabaseObject {
+  _id: Long!
+  address: String
+  dbId: Int!
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+}
+
+type DatabaseObject_ExternalOntology_PsiMod {
+  _id: Long!
+  databaseName: String!
+  dbId: Int!
+  definition: String
+  displayName: String!
+  identifier: String!
+  label: String
+  name: [String]!
+  schemaClass: String!
+  synonym: [String]
+  url: String!
+}
+
+type DatabaseObject_PositiveRegulation_Regulation {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  oldStId: String
+  schemaClass: String!
+  stId: String
+  stIdVersion: String
+}
+
+type DatabaseObject_Summation {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+  text: String!
+}
+
+type DatabaseObject_Event_FailedReaction_ReactionLikeEvent {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  releaseStatus: String
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type DatabaseObject_PositiveRegulation_Regulation_Requirement {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  oldStId: String
+  schemaClass: String!
+  stId: String
+  stIdVersion: String
+}
+
+type DatabaseObject_Drug_PhysicalEntity_ProteinDrug {
+  _id: Long!
+  dbId: Int!
+  definition: String
+  displayName: String!
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type CatalystActivity_DatabaseObject {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+}
+
+type Compartment_DatabaseObject_GO_CellularComponent_GO_Term {
+  _id: Long!
+  accession: String!
+  databaseName: String!
+  dbId: Int!
+  definition: String!
+  displayName: String!
+  name: String!
+  schemaClass: String!
+  url: String!
+}
+
+type DatabaseObject_GO_MolecularFunction_GO_Term {
+  _id: Long!
+  accession: String!
+  databaseName: String!
+  dbId: Int!
+  definition: String!
+  displayName: String!
+  ecNumber: String
+  name: String!
+  schemaClass: String!
+  url: String!
+}
+
+type DatabaseObject_EvidenceType {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+}
+
+type DatabaseObject_GO_BiologicalProcess_GO_Term {
+  _id: Long!
+  accession: String!
+  databaseName: String!
+  dbId: Int!
+  definition: String!
+  displayName: String!
+  name: String!
+  schemaClass: String!
+  url: String!
+}
+
+type DatabaseObject_Figure {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  schemaClass: String!
+  url: String!
+}
+
+type DatabaseObject_PositiveGeneExpressionRegulation_PositiveRegulation_Regulation {
+  _id: Long!
+  dbId: Int!
+  displayName: String!
+  oldStId: String
+  schemaClass: String!
+  stId: String
+  stIdVersion: String
+}
+
+type DatabaseObject_ReferenceEntity_ReferenceGeneProduct_ReferenceIsoform_ReferenceSequence {
+  _id: Long!
+  chain: [String]
+  checksum: String
+  comment: [String]
+  databaseName: String!
+  dbId: Int!
+  description: [String]
+  displayName: String!
+  geneName: [String]
+  identifier: String!
+  isSequenceChanged: Boolean
+  keyword: [String]
+  name: [String]
+  otherIdentifier: [String]
+  schemaClass: String!
+  secondaryIdentifier: [String]
+  sequenceLength: Int
+  url: String!
+  variantIdentifier: String!
+}
+
+type author @relation(name: "author") {
+  from: DatabaseObject_Person!
+  to: DatabaseObject_InstanceEdit!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type affiliation @relation(name: "affiliation") {
+  from: DatabaseObject_Person!
+  to: Affiliation_DatabaseObject!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type referenceDatabase @relation(name: "referenceDatabase") {
+  from: DatabaseIdentifier_DatabaseObject!
+  to: DatabaseObject_ReferenceDatabase!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type referenceGene @relation(name: "referenceGene") {
+  from: DatabaseObject_ReferenceEntity_ReferenceGeneProduct_ReferenceSequence!
+  to: DatabaseObject_ReferenceDNASequence_ReferenceEntity_ReferenceSequence!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type referenceTranscript @relation(name: "referenceTranscript") {
+  from: DatabaseObject_ReferenceEntity_ReferenceGeneProduct_ReferenceSequence!
+  to: DatabaseObject_ReferenceEntity_ReferenceRNASequence_ReferenceSequence!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type referenceEntity @relation(name: "referenceEntity") {
+  from: DatabaseObject_EntityWithAccessionedSequence_GenomeEncodedEntity_PhysicalEntity!
+  to: DatabaseObject_ReferenceEntity_ReferenceGeneProduct_ReferenceSequence!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type surroundedBy @relation(name: "surroundedBy") {
+  from: Compartment_DatabaseObject_GO_CellularComponent_GO_Term!
+  to: Compartment_DatabaseObject_GO_CellularComponent_GO_Term!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type compartment @relation(name: "compartment") {
+  from: DatabaseObject_Event_Reaction_ReactionLikeEvent!
+  to: Compartment_DatabaseObject_GO_CellularComponent_GO_Term!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type hasComponent @relation(name: "hasComponent") {
+  from: Complex_DatabaseObject_PhysicalEntity!
+  to: DatabaseObject_EntityWithAccessionedSequence_GenomeEncodedEntity_PhysicalEntity!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type psiMod @relation(name: "psiMod") {
+  from: AbstractModifiedResidue_DatabaseObject_ModifiedResidue_TranslationalModification!
+  to: DatabaseObject_ExternalOntology_PsiMod!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type referenceSequence @relation(name: "referenceSequence") {
+  from: AbstractModifiedResidue_DatabaseObject_ModifiedResidue_TranslationalModification!
+  to: DatabaseObject_ReferenceEntity_ReferenceGeneProduct_ReferenceSequence!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type hasModifiedResidue @relation(name: "hasModifiedResidue") {
+  from: DatabaseObject_EntityWithAccessionedSequence_GenomeEncodedEntity_PhysicalEntity!
+  to: AbstractModifiedResidue_DatabaseObject_ModifiedResidue_TranslationalModification!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type summation @relation(name: "summation") {
+  from: DatabaseObject_Event_Reaction_ReactionLikeEvent!
+  to: DatabaseObject_Summation!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type includedLocation @relation(name: "includedLocation") {
+  from: Complex_DatabaseObject_PhysicalEntity!
+  to: Compartment_DatabaseObject_GO_CellularComponent_GO_Term!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type modification @relation(name: "modification") {
+  from: AbstractModifiedResidue_DatabaseObject_GroupModifiedResidue_TranslationalModification!
+  to: DatabaseObject_PhysicalEntity_Polymer!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type activity @relation(name: "activity") {
+  from: CatalystActivity_DatabaseObject!
+  to: DatabaseObject_GO_MolecularFunction_GO_Term!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type evidenceType @relation(name: "evidenceType") {
+  from: DatabaseObject_Event_Pathway_TopLevelPathway!
+  to: DatabaseObject_EvidenceType!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type goBiologicalProcess @relation(name: "goBiologicalProcess") {
+  from: DatabaseObject_Event_Pathway!
+  to: DatabaseObject_GO_BiologicalProcess_GO_Term!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type isoformParent @relation(name: "isoformParent") {
+  from: DatabaseObject_ReferenceEntity_ReferenceGeneProduct_ReferenceIsoform_ReferenceSequence!
+  to: DatabaseObject_ReferenceEntity_ReferenceGeneProduct_ReferenceSequence!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type equivalentTo @relation(name: "equivalentTo") {
+  from: AbstractModifiedResidue_CrosslinkedResidue_DatabaseObject_InterChainCrosslinkedResidue_TranslationalModification!
+  to: AbstractModifiedResidue_CrosslinkedResidue_DatabaseObject_InterChainCrosslinkedResidue_TranslationalModification!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type secondReferenceSequence @relation(name: "secondReferenceSequence") {
+  from: AbstractModifiedResidue_CrosslinkedResidue_DatabaseObject_InterChainCrosslinkedResidue_TranslationalModification!
+  to: DatabaseObject_ReferenceEntity_ReferenceGeneProduct_ReferenceSequence!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type catalystActivityReference @relation(name: "catalystActivityReference") {
+  from: DatabaseObject_Event_Reaction_ReactionLikeEvent!
+  to: CatalystActivityReference_ControlReference_DatabaseObject!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type publisher @relation(name: "publisher") {
+  from: Book_DatabaseObject_Publication!
+  to: Affiliation_DatabaseObject!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type reverseReaction @relation(name: "reverseReaction") {
+  from: DatabaseObject_Event_Reaction_ReactionLikeEvent!
+  to: DatabaseObject_Event_Reaction_ReactionLikeEvent!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type hasEncapsulatedEvent @relation(name: "hasEncapsulatedEvent") {
+  from: DatabaseObject_Event_Pathway!
+  to: DatabaseObject_Event_Pathway!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type functionalStatusType @relation(name: "functionalStatusType") {
+  from: DatabaseObject_FunctionalStatus!
+  to: DatabaseObject_FunctionalStatusType!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type structuralVariant @relation(name: "structuralVariant") {
+  from: DatabaseObject_FunctionalStatus!
+  to: DatabaseObject_ExternalOntology_SequenceOntology!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type functionalStatus @relation(name: "functionalStatus") {
+  from: DatabaseObject_EntityFunctionalStatus!
+  to: DatabaseObject_FunctionalStatus!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type normalPathway @relation(name: "normalPathway") {
+  from: DatabaseObject_Event_Pathway!
+  to: DatabaseObject_Event_Pathway!
+  order: Int!
+  stoichiometry: Int!
+}
+
+type interactor @relation(name: "interactor") {
+  from: DatabaseObject_Interaction_UndirectedInteraction!
+  to: DatabaseObject_ReferenceEntity_ReferenceGeneProduct_ReferenceSequence!
+  order: Int!
+  stoichiometry: Int!
+}
+
+# DatabaseObject
+# AbstractModifiedResidue [49757]
+# GeneticallyModifiedResidue [2036]
+# FragmentModification [260]
+# FragmentDeletionModification [59]
+# FragmentInsertionModification [81]
+# FragmentReplacedModification [120]
+# ReplacedResidue [1776]
+# TranslationalModification [47721]
+# CrosslinkedResidue [3288]
+# InterChainCrosslinkedResidue [3078]
+# IntraChainCrosslinkedResidue [210]
+# GroupModifiedResidue [9952]
+# ModifiedResidue [34481]
+# Affiliation [294]
+# CatalystActivity [35861]
+# ControlReference [2036]
+# CatalystActivityReference [818]
+# RegulationReference [1218]
+# DatabaseIdentifier [662168]
+# EntityFunctionalStatus [574]
+# Event [104254]
+# Pathway [21321]
+# TopLevelPathway [388]
+# ReactionLikeEvent [82933]
+# BlackBoxEvent [7345]
+# Depolymerisation [31]
+# FailedReaction [378]
+# Polymerisation [247]
+# Reaction [74932]
+# EvidenceType [1]
+# ExternalOntology [584]
+# Disease [412]
+# PsiMod [157]
+# SequenceOntology [15]
+# Figure [790]
+# FunctionalStatus [25]
+# FunctionalStatusType [5]
+# GO_Term [2808]
+# GO_BiologicalProcess [871]
+# GO_CellularComponent [449]
+# Compartment [145]
+# GO_MolecularFunction [1488]
+# InstanceEdit [97088]
+# Interaction [39112]
+# UndirectedInteraction [39112]
+# Person [120689]
+# PhysicalEntity [403200]
+# Complex [96109]
+# Drug [237]
+# ChemicalDrug [230]
+# ProteinDrug [7]
+# EntitySet [42832]
+# CandidateSet [7627]
+# DefinedSet [35205]
+# GenomeEncodedEntity [258724]
+# EntityWithAccessionedSequence [252766]
+# OtherEntity [332]
+# Polymer [1507]
+# SimpleEntity [3459]
+# Publication [31340]
+# Book [119]
+# LiteratureReference [31199]
+# URL [22]
+# ReferenceDatabase [139]
+# ReferenceEntity [662294]
+# ReferenceGroup [99]
+# ReferenceMolecule [1904]
+# ReferenceSequence [660065]
+# ReferenceDNASequence [448146]
+# ReferenceGeneProduct [102316]
+# ReferenceIsoform [1758]
+# ReferenceRNASequence [109603]
+# ReferenceTherapeutic [226]
+# Regulation [5479]
+# NegativeRegulation [2063]
+# NegativeGeneExpressionRegulation [216]
+# PositiveRegulation [3416]
+# PositiveGeneExpressionRegulation [797]
+# Requirement [674]
+# Summation [17210]
+# Taxon [387]
+# Species [82]
+
+# authored, compartment, created, crossReference, dbId, definition, disease, displayName
+# edited, eventOf, evidenceType, figure, followingEvent, goBiologicalProcess, inferredFrom
+# isInDisease, isInferred, literatureReference, modified, name, orthologousEvent
+# precedingEvent, relatedSpecies, releaseDate, releaseStatus, reviewed
+# revised, schemaClass, species, stId, summation
+
+# SAMPLE BUSINESS REVIEW SCHEMA
+
+# type User {
+#   id: ID!
+#   name: String
+#   friends: [User] @relation(name: "FRIENDS", direction: "BOTH")
+#   reviews: [Review] @relation(name: "WROTE", direction: "OUT")
+#   avgStars: Float
+#     @cypher(
+#       statement: "MATCH (this)-[:WROTE]->(r:Review) RETURN toFloat(avg(r.stars))"
+#     )
+#   numReviews: Int
+#     @cypher(statement: "MATCH (this)-[:WROTE]->(r:Review) RETURN COUNT(r)")
+#   recommendations(first: Int = 3): [Business]
+#     @cypher(
+#       statement: "MATCH (this)-[:WROTE]->(r:Review)-[:REVIEWS]->(:Business)<-[:REVIEWS]-(:Review)<-[:WROTE]-(:User)-[:WROTE]->(:Review)-[:REVIEWS]->(rec:Business) WHERE NOT EXISTS( (this)-[:WROTE]->(:Review)-[:REVIEWS]->(rec) )WITH rec, COUNT(*) AS num ORDER BY num DESC LIMIT $first RETURN rec"
+#     )
+# }
+
+# type Business {
+#   id: ID!
+#   name: String
+#   address: String
+#   city: String
+#   state: String
+#   avgStars: Float
+#     @cypher(
+#       statement: "MATCH (this)<-[:REVIEWS]-(r:Review) RETURN coalesce(avg(r.stars),0.0)"
+#     )
+#   reviews: [Review] @relation(name: "REVIEWS", direction: "IN")
+#   categories: [Category] @relation(name: "IN_CATEGORY", direction: "OUT")
+# }
+
+# type Review {
+#   id: ID!
+#   stars: Int
+#   text: String
+#   date: Date
+#   business: Business @relation(name: "REVIEWS", direction: "OUT")
+#   user: User @relation(name: "WROTE", direction: "IN")
+# }
+
+# type Category {
+#   name: ID!
+#   businesses: [Business] @relation(name: "IN_CATEGORY", direction: "IN")
+# }
+
+# type Query {
+#   usersBySubstring(substring: String): [User]
+#     @cypher(
+#       statement: "MATCH (u:User) WHERE u.name CONTAINS $substring RETURN u"
+#     )
+# }
