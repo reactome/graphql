@@ -11,7 +11,7 @@
     "start": "npm run build && node build/index.js"
   },
   "author": "Reactome Dev Team",
-  "license": "NA",
+  "license": "Apache 2.0",
   "dependencies": {
     "apollo-boost": "^0.3.1",
     "apollo-cache-inmemory": "^1.6.3",
