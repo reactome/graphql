@@ -1,7 +1,7 @@
 # Reactome TypeDefs
 
 # ------------ Interface List
-interface EventInterface {
+interface Event {
   dbId: ID!
   schemaClass: String
   oldStId: String
@@ -24,7 +24,7 @@ interface EventInterface {
   systematicName: String
 }
 
-interface PhysicalEntityInterface {
+interface PhysicalEntity {
   dbId: ID!
   definition: String
   displayName: String
@@ -46,7 +46,7 @@ interface PhysicalEntityInterface {
   systematicName: String
 }
 
-interface ReferenceEntityInterface {
+interface ReferenceEntity {
   dbId: ID!
   abbreviation: String
   approvalSource: [String]
@@ -74,33 +74,10 @@ interface ReferenceEntityInterface {
   variantIdentifier: String!
 }
 
-# ----- Types By "EventInterface" Interface -----
-# (Type List: Event, Pathway, Reaction)
+# ----- Types By "Event" Interface -----
+# (Type List: Pathway, Reaction)
 
-type Event implements EventInterface {
-  dbId: ID!
-  schemaClass: String
-  oldStId: String
-  isInDisease: Boolean
-  releaseDate: String
-  displayName: String
-  stId: String
-  speciesName: String
-  diagramHeight: Int
-  hasEHLD: Boolean
-  stIdVersion: String
-  releaseStatus: String
-  name: [String]!
-  definition: String
-  hasDiagram: Boolean
-  isInferred: Boolean
-  doi: String
-  diagramWidth: Int
-  isChimeric: Boolean
-  systematicName: String
-}
-
-type Pathway implements EventInterface {
+type Pathway implements Event {
   dbId: ID!
   schemaClass: String
   oldStId: String
@@ -124,7 +101,7 @@ type Pathway implements EventInterface {
   hasEvent: [Event] @relation(name: "hasEvent", direction: "OUT")
 }
 
-type Reaction implements EventInterface {
+type Reaction implements Event {
   dbId: ID!
   schemaClass: String
   oldStId: String
@@ -157,9 +134,8 @@ type Reaction implements EventInterface {
 }
 
 # ----- Types By "PhysicalEntity" Interface -----
-# (Type List: PhysicalEntity, Complex, Drug, Set, GenomeEncodedEntity, EntityWithAccessionedSequence, OtherEntity, Polymer, SimpleEntity)
-
-type PhysicalEntity implements PhysicalEntityInterface {
+# (Type List: Complex, Drug, Set, GenomeEncodedEntity, EntityWithAccessionedSequence, OtherEntity, Polymer, SimpleEntity)
+type Complex implements PhysicalEntity {
   dbId: ID!
   definition: String
   displayName: String
@@ -181,7 +157,7 @@ type PhysicalEntity implements PhysicalEntityInterface {
   systematicName: String
 }
 
-type Complex implements PhysicalEntityInterface {
+type Drug implements PhysicalEntity {
   dbId: ID!
   definition: String
   displayName: String
@@ -203,29 +179,7 @@ type Complex implements PhysicalEntityInterface {
   systematicName: String
 }
 
-type Drug implements PhysicalEntityInterface {
-  dbId: ID!
-  definition: String
-  displayName: String
-  endCoordinate: Int
-  isChimeric: Boolean
-  isInDisease: Boolean
-  isOrdered: Boolean
-  maxUnitCount: Int
-  minUnitCount: Int
-  name: [String]!
-  oldStId: String
-  referenceType: String
-  schemaClass: String
-  speciesName: String
-  startCoordinate: Int
-  stId: String
-  stIdVersion: String
-  stoichiometryKnown: Boolean
-  systematicName: String
-}
-
-type Set implements PhysicalEntityInterface {
+type Set implements PhysicalEntity {
   dbId: ID!
   definition: String
   displayName: String
@@ -249,7 +203,7 @@ type Set implements PhysicalEntityInterface {
   candidates: [PhysicalEntity] @relation(name: "hasCandidate", direction: "OUT")
 }
 
-type GenomeEncodedEntity implements PhysicalEntityInterface {
+type GenomeEncodedEntity implements PhysicalEntity {
   dbId: ID!
   definition: String
   displayName: String
@@ -271,7 +225,7 @@ type GenomeEncodedEntity implements PhysicalEntityInterface {
   systematicName: String
 }
 
-type EntityWithAccessionedSequence implements PhysicalEntityInterface {
+type EntityWithAccessionedSequence implements PhysicalEntity {
   dbId: ID!
   definition: String
   displayName: String
@@ -293,7 +247,7 @@ type EntityWithAccessionedSequence implements PhysicalEntityInterface {
   systematicName: String
 }
 
-type OtherEntity implements PhysicalEntityInterface {
+type OtherEntity implements PhysicalEntity {
   dbId: ID!
   definition: String
   displayName: String
@@ -315,7 +269,7 @@ type OtherEntity implements PhysicalEntityInterface {
   systematicName: String
 }
 
-type Polymer implements PhysicalEntityInterface {
+type Polymer implements PhysicalEntity {
   dbId: ID!
   definition: String
   displayName: String
@@ -337,7 +291,7 @@ type Polymer implements PhysicalEntityInterface {
   systematicName: String
 }
 
-type SimpleEntity implements PhysicalEntityInterface {
+type SimpleEntity implements PhysicalEntity {
   dbId: ID!
   definition: String
   displayName: String
@@ -360,9 +314,9 @@ type SimpleEntity implements PhysicalEntityInterface {
 }
 
 # ----- Types By "ReferenceEntity" Interface -----
-# (Type List: ReferenceEntity, ReferenceGeneProduct, ReferenceMolecule)
+# (Type List: ReferenceGeneProduct, ReferenceMolecule)
 
-type ReferenceEntity implements ReferenceEntityInterface {
+type ReferenceGeneProduct implements ReferenceEntity {
   dbId: ID!
   abbreviation: String
   approvalSource: [String]
@@ -390,7 +344,7 @@ type ReferenceEntity implements ReferenceEntityInterface {
   variantIdentifier: String!
 }
 
-type ReferenceGeneProduct implements ReferenceEntityInterface {
+type ReferenceMolecule implements ReferenceEntity {
   dbId: ID!
   abbreviation: String
   approvalSource: [String]
@@ -418,30 +372,215 @@ type ReferenceGeneProduct implements ReferenceEntityInterface {
   variantIdentifier: String!
 }
 
-type ReferenceMolecule implements ReferenceEntityInterface {
-  dbId: ID!
-  abbreviation: String
-  approvalSource: [String]
-  approved: Boolean!
-  chain: [String]
-  checksum: String
-  comment: [String]
-  databaseName: String!
-  description: [String]
-  displayName: String!
-  formula: String
-  geneName: [String]
-  inn: String
-  identifier: String!
-  isSequenceChanged: Boolean
-  keyword: [String]
-  name: [String]
-  otherIdentifier: [String]
-  schemaClass: String!
-  secondaryIdentifier: [String]
-  sequenceLength: Int
-  trivial: Boolean
-  type: String
-  url: String!
-  variantIdentifier: String!
-}
+# ------ UNDER DEVELOPMENT ------
+
+# # ------ By ReactionLikeEvent Interface
+# type BlackBoxEvent implements ReactionLikeEvent {
+#   dbId: ID!
+#   definition: String
+#   displayName: String!
+#   isChimeric: Boolean
+#   isInDisease: Boolean!
+#   isInferred: Boolean!
+#   name: [String]!
+#   oldStId: String
+#   releaseDate: String!
+#   releaseStatus: String
+#   schemaClass: String!
+#   speciesName: String!
+#   stId: String!
+#   stIdVersion: String!
+#   systematicName: String
+#   input: [PhysicalEntity] @relation(name: "input", direction: "OUT")
+#   output: [PhysicalEntity] @relation(name: "output", direction: "OUT")
+#   catalystActivity: [CatalystActivity]
+#     @relation(name: "catalystActivity", direction: "OUT")
+#   templateEvent: [Event] @relation(name: "templateEvent", direction: "OUT")
+# }
+
+# type Depolymerisation implements ReactionLikeEvent {
+#   dbId: ID!
+#   definition: String
+#   displayName: String!
+#   isChimeric: Boolean
+#   isInDisease: Boolean!
+#   isInferred: Boolean!
+#   name: [String]!
+#   oldStId: String
+#   releaseDate: String!
+#   releaseStatus: String
+#   schemaClass: String!
+#   speciesName: String!
+#   stId: String!
+#   stIdVersion: String!
+#   systematicName: String
+#   input: [PhysicalEntity] @relation(name: "input", direction: "OUT")
+#   output: [PhysicalEntity] @relation(name: "output", direction: "OUT")
+#   catalystActivity: [CatalystActivity]
+#     @relation(name: "catalystActivity", direction: "OUT")
+# }
+
+# type FailedReaction implements ReactionLikeEvent {
+#   dbId: ID!
+#   definition: String
+#   displayName: String!
+#   isChimeric: Boolean
+#   isInDisease: Boolean!
+#   isInferred: Boolean!
+#   name: [String]!
+#   oldStId: String
+#   releaseDate: String!
+#   releaseStatus: String
+#   schemaClass: String!
+#   speciesName: String!
+#   stId: String!
+#   stIdVersion: String!
+#   systematicName: String
+#   input: [PhysicalEntity] @relation(name: "input", direction: "OUT")
+#   output: [PhysicalEntity] @relation(name: "output", direction: "OUT")
+#   catalystActivity: [CatalystActivity]
+#     @relation(name: "catalystActivity", direction: "OUT")
+# }
+
+# type Polymerisation implements ReactionLikeEvent {
+#   dbId: ID!
+#   definition: String
+#   displayName: String!
+#   isChimeric: Boolean
+#   isInDisease: Boolean!
+#   isInferred: Boolean!
+#   name: [String]!
+#   oldStId: String
+#   releaseDate: String!
+#   releaseStatus: String
+#   schemaClass: String!
+#   speciesName: String!
+#   stId: String!
+#   stIdVersion: String!
+#   systematicName: String
+#   input: [PhysicalEntity] @relation(name: "input", direction: "OUT")
+#   output: [PhysicalEntity] @relation(name: "output", direction: "OUT")
+#   catalystActivity: [CatalystActivity]
+#     @relation(name: "catalystActivity", direction: "OUT")
+# }
+
+# type Reaction implements ReactionLikeEvent {
+#   dbId: ID!
+#   definition: String
+#   displayName: String!
+#   isChimeric: Boolean
+#   isInDisease: Boolean!
+#   isInferred: Boolean!
+#   name: [String]!
+#   oldStId: String
+#   releaseDate: String!
+#   releaseStatus: String
+#   schemaClass: String!
+#   speciesName: String!
+#   stId: String!
+#   stIdVersion: String!
+#   systematicName: String
+#   input: [PhysicalEntity] @relation(name: "input", direction: "OUT")
+#   output: [PhysicalEntity] @relation(name: "output", direction: "OUT")
+#   catalystActivity: [CatalystActivity]
+#     @relation(name: "catalystActivity", direction: "OUT")
+#   reverseReaction: [Reaction]
+#     @relation(name: "reverseReaction", direction: "BOTH")
+# }
+
+# SAMPLE BUSINESS REVIEW SCHEMA
+
+# type User {
+#   id: ID!
+#   name: String
+#   friends: [User] @relation(name: "FRIENDS", direction: "BOTH")
+#   reviews: [Review] @relation(name: "WROTE", direction: "OUT")
+#   avgStars: Float
+#   numReviews: Int
+#   recommendations(first: Int = 3): [Business]
+# }
+
+# type Business {
+#   id: ID!
+#   name: String
+#   address: String
+#   city: String
+#   state: String
+#   avgStars: Float
+#   reviews: [Review] @relation(name: "REVIEWS", direction: "IN")
+#   categories: [Category] @relation(name: "IN_CATEGORY", direction: "OUT")
+# }
+
+# type Review {
+#   id: ID!
+#   stars: Int
+#   text: String
+#   date: Date
+#   business: Business @relation(name: "REVIEWS", direction: "OUT")
+#   user: User @relation(name: "WROTE", direction: "IN")
+# }
+
+# type Category {
+#   name: ID!
+#   businesses: [Business] @relation(name: "IN_CATEGORY", direction: "IN")
+# }
+
+# type Query {
+#   usersBySubstring(substring: String): [User]
+# }
+
+#--------------------------------------------------------------------------------------------------------------------
+
+# SAMPLE BUSINESS REVIEW SCHEMA
+
+# type User {
+#   id: ID!
+#   name: String
+#   friends: [User] @relation(name: "FRIENDS", direction: "BOTH")
+#   reviews: [Review] @relation(name: "WROTE", direction: "OUT")
+#   avgStars: Float
+#     @cypher(
+#       statement: "MATCH (this)-[:WROTE]->(r:Review) RETURN toFloat(avg(r.stars))"
+#     )
+#   numReviews: Int
+#     @cypher(statement: "MATCH (this)-[:WROTE]->(r:Review) RETURN COUNT(r)")
+#   recommendations(first: Int = 3): [Business]
+#     @cypher(
+#       statement: "MATCH (this)-[:WROTE]->(r:Review)-[:REVIEWS]->(:Business)<-[:REVIEWS]-(:Review)<-[:WROTE]-(:User)-[:WROTE]->(:Review)-[:REVIEWS]->(rec:Business) WHERE NOT EXISTS( (this)-[:WROTE]->(:Review)-[:REVIEWS]->(rec) )WITH rec, COUNT(*) AS num ORDER BY num DESC LIMIT $first RETURN rec"
+#     )
+# }
+
+# type Business {
+#   id: ID!
+#   name: String
+#   address: String
+#   city: String
+#   state: String
+#   avgStars: Float
+#     @cypher(
+#       statement: "MATCH (this)<-[:REVIEWS]-(r:Review) RETURN coalesce(avg(r.stars),0.0)"
+#     )
+#   reviews: [Review] @relation(name: "REVIEWS", direction: "IN")
+#   categories: [Category] @relation(name: "IN_CATEGORY", direction: "OUT")
+# }
+
+# type Review {
+#   id: ID!
+#   stars: Int
+#   text: String
+#   date: Date
+#   business: Business @relation(name: "REVIEWS", direction: "OUT")
+#   user: User @relation(name: "WROTE", direction: "IN")
+# }
+
+# type Category {
+#   name: ID!
+#   businesses: [Business] @relation(name: "IN_CATEGORY", direction: "IN")
+# }
+
+# type Query {
+#   usersBySubstring(substring: String): [User]
+#     @cypher(
+#       statement: "MATCH (u:User) WHERE u.name CONTAINS $substring RETURN u"
+#     )
+# }

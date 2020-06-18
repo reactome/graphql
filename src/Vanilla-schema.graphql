@@ -1,0 +1,1075 @@
+#------------------- NON-Interface Schemas
+
+type AbstractModifiedResidue {
+  dbId: ID!
+  alteredAminoAcidFragment: String
+  coordinate: Int
+  displayName: String
+  endPositionInReferenceSequence: Int
+  schemaClass: String
+  secondCoordinate: Int
+  startPositionInReferenceSequence: Int
+}
+
+type Affiliation {
+  dbId: ID!
+  address: String
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+}
+
+type BlackBoxEvent {
+  dbId: ID!
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  releaseStatus: String
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type Book {
+  dbId: ID!
+  ISBN: String
+  chapterTitle: String
+  displayName: String!
+  pages: String
+  schemaClass: String!
+  title: String!
+  year: Int!
+}
+
+type CandidateSet {
+  dbId: ID!
+  definition: String
+  displayName: String!
+  isInDisease: Boolean!
+  isOrdered: Boolean
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  speciesName: String
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type CatalystActivity {
+  dbId: ID!
+  displayName: String!
+  schemaClass: String!
+}
+
+type CatalystActivityReference {
+  dbId: ID!
+  displayName: String!
+  schemaClass: String!
+}
+
+type ChemicalDrug {
+  dbId: ID!
+  displayName: String!
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type Compartment {
+  dbId: ID!
+  accession: String!
+  databaseName: String!
+  definition: String!
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+  url: String!
+}
+
+type Complex {
+  dbId: ID!
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  speciesName: String
+  stId: String!
+  stIdVersion: String!
+  stoichiometryKnown: Boolean
+  systematicName: String
+}
+
+type ControlReference {
+  dbId: ID!
+  displayName: String!
+  schemaClass: String!
+}
+
+type CrosslinkedResidue {
+  dbId: ID!
+  coordinate: Int
+  displayName: String!
+  schemaClass: String!
+  secondCoordinate: Int
+}
+
+type DBInfo {
+  checksum: Int!
+  name: [String]!
+  version: Int!
+}
+
+type DatabaseIdentifier {
+  dbId: ID!
+  databaseName: String!
+  displayName: String!
+  identifier: String!
+  schemaClass: String!
+  url: String!
+}
+
+type DatabaseObject {
+  dbId: ID!
+  abbreviation: String
+  accession: String
+  accessUrl: String
+  address: String
+  alteredAminoAcidFragment: String
+  approvalSource: [String]
+  approved: Boolean
+  chain: [String]
+  chapterTitle: String
+  checksum: Int
+  comment: String
+  coordinate: Int
+  databaseName: String
+  dateTime: String
+  definition: String
+  description: String
+  diagramHeight: Int
+  diagramWidth: Int
+  displayName: String
+  doi: String
+  ecNumber: String
+  endCoordinate: Int
+  endPositionInReferenceSequence: Int
+  firstname: String
+  formula: String
+  geneName: String
+  hasDiagram: Boolean
+  hasEHLD: Boolean
+  identifier: String
+  initial: String
+  inn: String
+  ISBN: String
+  isChimeric: Boolean
+  isInDisease: Boolean
+  isInferred: Boolean
+  isOrdered: Boolean
+  isSequenceChanged: Boolean
+  journal: String
+  keyword: [String]
+  label: String
+  maxUnitCount: Int
+  minUnitCount: Int
+  name: [String]!
+  note: String
+  oldStId: String
+  orcidId: String
+  otherIdentifier: [String]
+  pages: String
+  project: String
+  pubmed: [String]
+  pubMedIdentifier: Int
+  referenceType: String
+  releaseDate: String
+  releaseStatus: String
+  schemaClass: String
+  score: Float
+  secondaryIdentifier: [String]
+  secondCoordinate: Int
+  sequenceLength: Int
+  speciesName: String
+  startCoordinate: Int
+  startPositionInReferenceSequence: Int
+  stId: String
+  stIdVersion: String
+  stoichiometryKnown: Boolean
+  surname: String
+  synonym: [String]
+  systematicName: String
+  taxId: String
+  text: String
+  title: String
+  trivial: Boolean
+  type: String
+  uniformResourceLocator: String
+  url: String
+  variantIdentifier: String
+  volume: Int
+  year: Int
+}
+
+type DefinedSet {
+  dbId: ID!
+  displayName: String!
+  isInDisease: Boolean!
+  isOrdered: Boolean
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  speciesName: String
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type Depolymerisation {
+  dbId: ID!
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type Disease {
+  dbId: ID!
+  databaseName: String!
+  definition: String
+  displayName: String!
+  identifier: String!
+  name: [String]!
+  schemaClass: String!
+  synonym: [String]
+  url: String!
+}
+
+type Drug {
+  dbId: ID!
+  definition: String
+  displayName: String
+  isInDisease: Boolean
+  name: [String]
+  oldStId: String
+  schemaClass: String
+  stId: String
+  stIdVersion: String
+}
+
+type EntityFunctionalStatus {
+  dbId: ID!
+  displayName: String!
+  schemaClass: String!
+}
+
+type EntitySet {
+  dbId: ID!
+  definition: String
+  displayName: String!
+  isInDisease: Boolean!
+  isOrdered: Boolean
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  speciesName: String
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type EntityWithAccessionedSequence {
+  dbId: ID!
+  definition: String
+  displayName: String!
+  endCoordinate: Int
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  referenceType: String!
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  startCoordinate: Int
+}
+
+type Event {
+  dbId: ID!
+  schemaClass: String
+  oldStId: String
+  isInDisease: Boolean
+  releaseDate: String
+  displayName: String
+  stId: String
+  speciesName: String
+  diagramHeight: Int
+  hasEHLD: Boolean
+  stIdVersion: String
+  releaseStatus: String
+  name: [String]!
+  definition: String
+  hasDiagram: Boolean
+  isInferred: Boolean
+  doi: String
+  diagramWidth: Int
+  isChimeric: Boolean
+  systematicName: String
+}
+
+type EvidenceType {
+  dbId: ID!
+  displayName: String!
+  schemaClass: String!
+}
+
+type ExternalOntology {
+  dbId: ID!
+  databaseName: String!
+  definition: String
+  displayName: String!
+  identifier: String!
+  label: String
+  name: [String]!
+  schemaClass: String!
+  synonym: [String]
+  url: String!
+}
+
+type FailedReaction {
+  dbId: ID!
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  releaseStatus: String
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type Figure {
+  dbId: ID!
+  displayName: String!
+  schemaClass: String!
+  url: String!
+}
+
+type FragmentDeletionModification {
+  dbId: ID!
+  displayName: String!
+  endPositionInReferenceSequence: Int!
+  schemaClass: String!
+  startPositionInReferenceSequence: Int!
+}
+
+type FragmentInsertionModification {
+  dbId: ID!
+  coordinate: Int
+  displayName: String!
+  endPositionInReferenceSequence: Int!
+  schemaClass: String!
+  startPositionInReferenceSequence: Int!
+}
+
+type FragmentModification {
+  dbId: ID!
+  alteredAminoAcidFragment: String
+  coordinate: Int
+  displayName: String
+  endPositionInReferenceSequence: Int
+  schemaClass: String
+  startPositionInReferenceSequence: Int
+}
+
+type FragmentReplacedModification {
+  dbId: ID!
+  alteredAminoAcidFragment: String
+  displayName: String!
+  endPositionInReferenceSequence: Int!
+  schemaClass: String!
+  startPositionInReferenceSequence: Int!
+}
+
+type FunctionalStatus {
+  dbId: ID!
+  displayName: String!
+  schemaClass: String!
+}
+
+type FunctionalStatusType {
+  dbId: ID!
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+}
+
+type GO_BiologicalProcess {
+  dbId: ID!
+  accession: String!
+  databaseName: String!
+  definition: String!
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+  url: String!
+}
+
+type GO_CellularComponent {
+  dbId: ID!
+  accession: String!
+  databaseName: String!
+  definition: String!
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+  url: String!
+}
+
+type GO_MolecularFunction {
+  dbId: ID!
+  accession: String!
+  databaseName: String!
+  definition: String!
+  displayName: String!
+  ecNumber: String
+  name: [String]!
+  schemaClass: String!
+  url: String!
+}
+
+type GO_Term {
+  dbId: ID!
+  accession: String!
+  databaseName: String!
+  definition: String!
+  displayName: String!
+  ecNumber: String
+  name: [String]!
+  schemaClass: String!
+  url: String!
+}
+
+type GeneticallyModifiedResidue {
+  dbId: ID!
+  alteredAminoAcidFragment: String
+  coordinate: Int!
+  displayName: String!
+  endPositionInReferenceSequence: Int!
+  schemaClass: String!
+  startPositionInReferenceSequence: Int!
+}
+
+type GenomeEncodedEntity {
+  dbId: ID!
+  definition: String
+  displayName: String!
+  endCoordinate: Int
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  referenceType: String!
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  startCoordinate: Int
+}
+
+type GroupModifiedResidue {
+  dbId: ID!
+  coordinate: Int
+  displayName: String!
+  schemaClass: String!
+}
+
+type InstanceEdit {
+  dbId: ID!
+  dateTime: String!
+  displayName: String!
+  note: String
+  schemaClass: String!
+  #person: [Person] @relation(name: "author", direction: "IN")
+}
+
+type InterChainCrosslinkedResidue {
+  dbId: ID!
+  coordinate: Int
+  displayName: String!
+  schemaClass: String!
+  secondCoordinate: Int
+}
+
+type Interaction {
+  dbId: ID!
+  accession: [String]!
+  databaseName: String!
+  displayName: String!
+  pubmed: [String]
+  schemaClass: String!
+  score: Float!
+  url: String!
+}
+
+type IntraChainCrosslinkedResidue {
+  dbId: ID!
+  coordinate: Int!
+  displayName: String!
+  schemaClass: String!
+  secondCoordinate: Int
+}
+
+type LiteratureReference {
+  dbId: ID!
+  displayName: String!
+  journal: String!
+  pages: String
+  pubMedIdentifier: Int
+  schemaClass: String!
+  title: String!
+  volume: Int
+  year: Int!
+}
+
+type ModifiedResidue {
+  dbId: ID!
+  coordinate: Int
+  displayName: String!
+  schemaClass: String!
+}
+
+type NegativeGeneExpressionRegulation {
+  dbId: ID!
+  displayName: String!
+  oldStId: String
+  schemaClass: String!
+  stId: String
+  stIdVersion: String
+}
+
+type NegativeRegulation {
+  dbId: ID!
+  displayName: String!
+  oldStId: String
+  schemaClass: String!
+  stId: String
+  stIdVersion: String
+}
+
+type OtherEntity {
+  dbId: ID!
+  definition: String
+  displayName: String!
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type Pathway {
+  dbId: ID!
+  definition: String
+  diagramHeight: Int
+  diagramWidth: Int
+  displayName: String!
+  doi: String
+  hasDiagram: Boolean!
+  hasEHLD: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  releaseStatus: String
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  hasEvent: [Event] @relation(name: "hasEvent", direction: "BOTH")
+}
+
+type Person {
+  dbId: ID!
+  displayName: String!
+  firstname: String
+  initial: String!
+  orcidId: String
+  project: String
+  schemaClass: String!
+  surname: String!
+  #instanceEdit: [InstanceEdit] @relation(name: "author", direction: "OUT")
+}
+
+type PhysicalEntity {
+  dbId: ID!
+  definition: String
+  displayName: String
+  endCoordinate: Int
+  isChimeric: Boolean
+  isInDisease: Boolean
+  isOrdered: Boolean
+  maxUnitCount: Int
+  minUnitCount: Int
+  name: [String]!
+  oldStId: String
+  referenceType: String
+  schemaClass: String
+  speciesName: String
+  startCoordinate: Int
+  stId: String
+  stIdVersion: String
+  stoichiometryKnown: Boolean
+  systematicName: String
+}
+
+type Polymer {
+  dbId: ID!
+  definition: String
+  displayName: String!
+  isInDisease: Boolean!
+  maxUnitCount: Int
+  minUnitCount: Int
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  speciesName: String
+  stId: String!
+  stIdVersion: String!
+}
+
+type Polymerisation {
+  dbId: ID!
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type PositiveGeneExpressionRegulation {
+  dbId: ID!
+  displayName: String!
+  oldStId: String
+  schemaClass: String!
+  stId: String
+  stIdVersion: String
+}
+
+type PositiveRegulation {
+  dbId: ID!
+  displayName: String!
+  oldStId: String
+  schemaClass: String!
+  stId: String
+  stIdVersion: String
+}
+
+type ProteinDrug {
+  dbId: ID!
+  definition: String
+  displayName: String!
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  schemaClass: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type PsiMod {
+  dbId: ID!
+  databaseName: String!
+  definition: String
+  displayName: String!
+  identifier: String!
+  label: String
+  name: [String]!
+  schemaClass: String!
+  synonym: [String]
+  url: String!
+}
+
+type Publication {
+  dbId: ID!
+  displayName: String!
+  ISBN: String
+  chapterTitle: String
+  journal: String!
+  pages: String
+  pubMedIdentifier: Int
+  schemaClass: String!
+  title: String!
+  volume: Int
+  year: Int!
+  uniformResourceLocator: String!
+}
+
+type Reaction {
+  dbId: ID!
+  definition: String
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  releaseStatus: String
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+}
+
+type ReactionLikeEvent {
+  dbId: ID!
+  definition: String
+  displayName: String!
+  isChimeric: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  releaseStatus: String
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+  systematicName: String
+  input: [PhysicalEntity] @relation(name: "input", direction: "OUT")
+  output: [PhysicalEntity] @relation(name: "output", direction: "OUT")
+  catalystActivity: [CatalystActivity]
+    @relation(name: "catalystActivity", direction: "OUT")
+}
+
+type ReferenceDNASequence {
+  dbId: ID!
+  comment: [String]
+  databaseName: String!
+  description: [String]
+  displayName: String!
+  geneName: [String]
+  identifier: String!
+  keyword: [String]
+  name: [String]
+  otherIdentifier: [String]
+  schemaClass: String!
+  sequenceLength: Int
+  url: String!
+}
+
+type ReferenceDatabase {
+  dbId: ID!
+  accessUrl: String!
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+  url: String!
+}
+
+type ReferenceEntity {
+  dbId: ID!
+  abbreviation: String
+  approvalSource: [String]
+  approved: Boolean!
+  chain: [String]
+  checksum: String
+  comment: [String]
+  databaseName: String!
+  description: [String]
+  displayName: String!
+  formula: String
+  geneName: [String]
+  inn: String
+  identifier: String!
+  isSequenceChanged: Boolean
+  keyword: [String]
+  name: [String]
+  otherIdentifier: [String]
+  schemaClass: String!
+  secondaryIdentifier: [String]
+  sequenceLength: Int
+  trivial: Boolean
+  type: String
+  url: String!
+  variantIdentifier: String!
+}
+
+type ReferenceGeneProduct {
+  dbId: ID!
+  chain: [String]
+  checksum: String
+  comment: [String]
+  databaseName: String!
+  description: [String]
+  displayName: String!
+  geneName: [String]
+  identifier: String!
+  isSequenceChanged: Boolean
+  keyword: [String]
+  name: [String]
+  otherIdentifier: [String]
+  schemaClass: String!
+  secondaryIdentifier: [String]
+  sequenceLength: Int
+  url: String!
+  variantIdentifier: String!
+}
+
+type ReferenceGroup {
+  dbId: ID!
+  databaseName: String!
+  displayName: String!
+  formula: String
+  identifier: String!
+  name: [String]!
+  schemaClass: String!
+  url: String!
+}
+
+type ReferenceIsoform {
+  dbId: ID!
+  chain: [String]
+  checksum: String
+  comment: [String]
+  databaseName: String!
+  description: [String]
+  displayName: String!
+  geneName: [String]
+  identifier: String!
+  isSequenceChanged: Boolean
+  keyword: [String]
+  name: [String]
+  otherIdentifier: [String]
+  schemaClass: String!
+  secondaryIdentifier: [String]
+  sequenceLength: Int
+  url: String!
+  variantIdentifier: String!
+}
+
+type ReferenceMolecule {
+  dbId: ID!
+  databaseName: String!
+  displayName: String!
+  formula: String
+  geneName: [String]
+  identifier: String!
+  name: [String]!
+  otherIdentifier: [String]
+  schemaClass: String!
+  secondaryIdentifier: [String]
+  trivial: Boolean
+  url: String!
+}
+
+type ReferenceRNASequence {
+  dbId: ID!
+  comment: [String]
+  databaseName: String!
+  description: [String]
+  displayName: String!
+  geneName: [String]
+  identifier: String!
+  name: [String]
+  schemaClass: String!
+  url: String!
+}
+
+type ReferenceSequence {
+  dbId: ID!
+  chain: [String]
+  checksum: String
+  comment: [String]
+  databaseName: String!
+  description: [String]
+  displayName: String!
+  geneName: [String]
+  identifier: String!
+  isSequenceChanged: Boolean
+  keyword: [String]
+  name: [String]
+  otherIdentifier: [String]
+  schemaClass: String!
+  secondaryIdentifier: [String]
+  sequenceLength: Int
+  url: String!
+  variantIdentifier: String!
+}
+
+type ReferenceTherapeutic {
+  dbId: ID!
+  abbreviation: String
+  approvalSource: [String]
+  approved: Boolean!
+  databaseName: String!
+  displayName: String!
+  identifier: String!
+  inn: String
+  name: [String]!
+  schemaClass: String!
+  type: String
+  url: String!
+}
+
+type Regulation {
+  dbId: ID!
+  displayName: String!
+  oldStId: String
+  schemaClass: String!
+  stId: String
+  stIdVersion: String
+}
+
+type RegulationReference {
+  dbId: ID!
+  displayName: String!
+  schemaClass: String!
+}
+
+type ReplacedResidue {
+  dbId: ID!
+  coordinate: Int!
+  displayName: String!
+  schemaClass: String!
+}
+
+type Requirement {
+  dbId: ID!
+  displayName: String!
+  oldStId: String
+  schemaClass: String!
+  stId: String
+  stIdVersion: String
+}
+
+type SequenceOntology {
+  dbId: ID!
+  databaseName: String!
+  definition: String!
+  displayName: String!
+  identifier: String!
+  name: [String]!
+  schemaClass: String!
+  synonym: [String]!
+  url: String!
+}
+
+type SimpleEntity {
+  dbId: ID!
+  definition: String
+  displayName: String!
+  isInDisease: Boolean!
+  name: [String]!
+  oldStId: String
+  referenceType: String!
+  schemaClass: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type Species {
+  dbId: ID!
+  abbreviation: String!
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+  taxId: String!
+}
+
+type Summation {
+  dbId: ID!
+  displayName: String!
+  schemaClass: String!
+  text: String!
+}
+
+type Taxon {
+  dbId: ID!
+  abbreviation: String!
+  displayName: String!
+  name: [String]!
+  schemaClass: String!
+  taxId: String!
+}
+
+type TopLevelPathway {
+  dbId: ID!
+  diagramHeight: Int!
+  diagramWidth: Int!
+  displayName: String!
+  doi: String
+  hasDiagram: Boolean!
+  hasEHLD: Boolean
+  isInDisease: Boolean!
+  isInferred: Boolean!
+  name: [String]!
+  oldStId: String
+  releaseDate: String!
+  releaseStatus: String
+  schemaClass: String!
+  speciesName: String!
+  stId: String!
+  stIdVersion: String!
+}
+
+type TranslationalModification {
+  dbId: ID!
+  coordinate: Int
+  displayName: String!
+  schemaClass: String!
+  secondCoordinate: Int
+}
+
+type URL {
+  dbId: ID!
+  displayName: String!
+  schemaClass: String!
+  title: String!
+  uniformResourceLocator: String!
+}
+
+type UndirectedInteraction {
+  dbId: ID!
+  accession: [String]!
+  databaseName: String!
+  displayName: String!
+  pubmed: [String]
+  schemaClass: String!
+  score: Float!
+  url: String!
+}
