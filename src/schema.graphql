@@ -2,7 +2,8 @@
 
 # ------------ Interface List
 interface EventInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   schemaClass: String
   oldStId: String
   isInDisease: Boolean
@@ -25,7 +26,8 @@ interface EventInterface {
 }
 
 interface PhysicalEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   definition: String
   displayName: String
   endCoordinate: Int
@@ -47,7 +49,8 @@ interface PhysicalEntityInterface {
 }
 
 interface ReferenceEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   abbreviation: String
   approvalSource: [String]
   approved: Boolean!
@@ -78,7 +81,8 @@ interface ReferenceEntityInterface {
 # (Type List: Event, Pathway, Reaction)
 
 type Event implements EventInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   schemaClass: String
   oldStId: String
   isInDisease: Boolean
@@ -101,7 +105,8 @@ type Event implements EventInterface {
 }
 
 type Pathway implements EventInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   schemaClass: String
   oldStId: String
   isInDisease: Boolean
@@ -125,7 +130,8 @@ type Pathway implements EventInterface {
 }
 
 type Reaction implements EventInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   schemaClass: String
   oldStId: String
   isInDisease: Boolean
@@ -160,7 +166,8 @@ type Reaction implements EventInterface {
 # (Type List: PhysicalEntity, Complex, Drug, Set, GenomeEncodedEntity, EntityWithAccessionedSequence, OtherEntity, Polymer, SimpleEntity)
 
 type PhysicalEntity implements PhysicalEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   definition: String
   displayName: String
   endCoordinate: Int
@@ -182,7 +189,8 @@ type PhysicalEntity implements PhysicalEntityInterface {
 }
 
 type Complex implements PhysicalEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   definition: String
   displayName: String
   endCoordinate: Int
@@ -204,7 +212,8 @@ type Complex implements PhysicalEntityInterface {
 }
 
 type Drug implements PhysicalEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   definition: String
   displayName: String
   endCoordinate: Int
@@ -226,7 +235,8 @@ type Drug implements PhysicalEntityInterface {
 }
 
 type Set implements PhysicalEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   definition: String
   displayName: String
   endCoordinate: Int
@@ -250,7 +260,8 @@ type Set implements PhysicalEntityInterface {
 }
 
 type GenomeEncodedEntity implements PhysicalEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   definition: String
   displayName: String
   endCoordinate: Int
@@ -272,7 +283,8 @@ type GenomeEncodedEntity implements PhysicalEntityInterface {
 }
 
 type EntityWithAccessionedSequence implements PhysicalEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   definition: String
   displayName: String
   endCoordinate: Int
@@ -294,7 +306,8 @@ type EntityWithAccessionedSequence implements PhysicalEntityInterface {
 }
 
 type OtherEntity implements PhysicalEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   definition: String
   displayName: String
   endCoordinate: Int
@@ -316,7 +329,8 @@ type OtherEntity implements PhysicalEntityInterface {
 }
 
 type Polymer implements PhysicalEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   definition: String
   displayName: String
   endCoordinate: Int
@@ -338,7 +352,8 @@ type Polymer implements PhysicalEntityInterface {
 }
 
 type SimpleEntity implements PhysicalEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   definition: String
   displayName: String
   endCoordinate: Int
@@ -363,7 +378,8 @@ type SimpleEntity implements PhysicalEntityInterface {
 # (Type List: ReferenceEntity, ReferenceGeneProduct, ReferenceMolecule)
 
 type ReferenceEntity implements ReferenceEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   abbreviation: String
   approvalSource: [String]
   approved: Boolean!
@@ -391,7 +407,8 @@ type ReferenceEntity implements ReferenceEntityInterface {
 }
 
 type ReferenceGeneProduct implements ReferenceEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   abbreviation: String
   approvalSource: [String]
   approved: Boolean!
@@ -419,7 +436,8 @@ type ReferenceGeneProduct implements ReferenceEntityInterface {
 }
 
 type ReferenceMolecule implements ReferenceEntityInterface {
-  dbId: ID!
+  id: ID
+  dbId: Int
   abbreviation: String
   approvalSource: [String]
   approved: Boolean!
