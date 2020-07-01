@@ -1,7 +1,7 @@
 {
-  "name": "GraphQL Interface For Querying Reactome Data",
-  "version": "0.0.1",
-  "description": "API App For Reactome Data",
+  "name": "reactome-graphql",
+  "version": "1.0.0",
+  "description": "GraphQL Interface For Querying Reactome Data",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
