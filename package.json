@@ -1,7 +1,7 @@
 {
-  "name": "graphql-for-reactome-data",
-  "version": "0.0.1",
-  "description": "API app Reactome Data",
+  "name": "reactome-graphql",
+  "version": "1.0.0",
+  "description": "GraphQL Interface For Querying Reactome Data",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +11,7 @@
     "start": "npm run build && node build/index.js",
     "seedDb": "./node_modules/.bin/babel-node src/seed/seed-db.js"
   },
-  "author": "William Lyon",
+  "author": "Reactome Team",
   "license": "Apache 1.0",
   "dependencies": {
     "apollo-boost": "^0.4.9",
