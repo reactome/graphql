@@ -1,3 +1,17 @@
+# On current DB
+# 1. match (n:ReactionLikeEvent) set n :Reaction
+# 2. WORKS --> match (n:EntityWithAccessionedSequence) set n :Protein
+# 3. match (n:Reaction) set n :PhysicalEntity
+
+# Add these commands:
+# ----- Useful
+# 1. match (n:EntityWithAccessionedSequence) set n :Protein
+
+# ----- Not-Useful
+# 2. match (n:ReactionLikeEvent) set n :Reaction
+# 3. match (n:Reaction) set n :ReactionLikeEvent
+# 4. match (n:Reaction) set n :PhysicalEntity
+
 # Reactome TypeDefs
 
 # ------------ Interface List
@@ -15,7 +29,7 @@ interface Event {
   hasEHLD: Boolean
   stIdVersion: String
   releaseStatus: String
-  name: [String]!
+  name: [String]
   definition: String
   hasDiagram: Boolean
   isInferred: Boolean
@@ -36,7 +50,7 @@ interface PhysicalEntity {
   isOrdered: Boolean
   maxUnitCount: Int
   minUnitCount: Int
-  name: [String]!
+  name: [String]
   oldStId: String
   referenceType: String
   schemaClass: String
@@ -53,32 +67,32 @@ interface ReferenceEntity {
   dbId: Int
   abbreviation: String
   approvalSource: [String]
-  approved: Boolean!
+  approved: Boolean
   chain: [String]
   checksum: String
   comment: [String]
-  databaseName: String!
+  databaseName: String
   description: [String]
-  displayName: String!
+  displayName: String
   formula: String
   geneName: [String]
   inn: String
-  identifier: String!
+  identifier: String
   isSequenceChanged: Boolean
   keyword: [String]
   name: [String]
   otherIdentifier: [String]
-  schemaClass: String!
+  schemaClass: String
   secondaryIdentifier: [String]
   sequenceLength: Int
   trivial: Boolean
   type: String
-  url: String!
-  variantIdentifier: String!
+  url: String
+  variantIdentifier: String
 }
 
-# ----- Types By "EventInterface" Interface -----
-# (Type List: Event, Pathway, Reaction)
+# ----- Types By "Event" Interface -----
+# (Type List: Pathway, Reaction)
 
 type Pathway implements Event {
   id: ID
@@ -94,7 +108,7 @@ type Pathway implements Event {
   hasEHLD: Boolean
   stIdVersion: String
   releaseStatus: String
-  name: [String]!
+  name: [String]
   definition: String
   hasDiagram: Boolean
   isInferred: Boolean
@@ -104,11 +118,12 @@ type Pathway implements Event {
   systematicName: String
   hasEvent: [Event] @relation(name: "hasEvent", direction: "OUT")
 }
+# extend type Pathway @additionalLabels(labels: ["newPathwayLabel"])
 
 type Reaction implements Event {
   id: ID
   dbId: Int
-  schemaClass: String
+  schemaClass: String @neo4j_ignore
   oldStId: String
   isInDisease: Boolean
   releaseDate: String
@@ -119,7 +134,7 @@ type Reaction implements Event {
   hasEHLD: Boolean
   stIdVersion: String
   releaseStatus: String
-  name: [String]!
+  name: [String]
   definition: String
   hasDiagram: Boolean
   isInferred: Boolean
@@ -127,19 +142,18 @@ type Reaction implements Event {
   diagramWidth: Int
   isChimeric: Boolean
   systematicName: String
-  entityOnOtherCell: [PhysicalEntity]
-    @relation(name: "entityOnOtherCell", direction: "OUT")
-  input: [PhysicalEntity] @relation(name: "input", direction: "BOTH")
-  output: [PhysicalEntity] @relation(name: "output", direction: "Bo")
-  requiredInputComponent: [PhysicalEntity]
-    @relation(name: "requiredInputComponent", direction: "OUT")
   templateEvent: [Event] @relation(name: "templateEvent", direction: "OUT")
   reverseReaction: [Reaction]
     @relation(name: "reverseReaction", direction: "BOTH")
+  input: [PhysicalEntity] @relation(name: "input", direction: "OUT")
+  #@neo4j_ignore
+  #@cypher(statement: "MATCH (this)-[:input]->(p:PhysicalEntity) RETURN p") # @relation(name: "input", direction: "OUT")
+  output: [PhysicalEntity] @relation(name: "output", direction: "OUT")
 }
+#@neo4j_ignore
 
 # ----- Types By "PhysicalEntity" Interface -----
-# (Type List: PhysicalEntity, Complex, Drug, Set, GenomeEncodedEntity, EntityWithAccessionedSequence, OtherEntity, Polymer, SimpleEntity)
+# (Type List: Complex, Drug, Set, GenomeEncodedEntity, EntityWithAccessionedSequence, OtherEntity, Polymer, SimpleEntity, Protein)
 
 type Complex implements PhysicalEntity {
   id: ID
@@ -152,7 +166,7 @@ type Complex implements PhysicalEntity {
   isOrdered: Boolean
   maxUnitCount: Int
   minUnitCount: Int
-  name: [String]!
+  name: [String]
   oldStId: String
   referenceType: String
   schemaClass: String
@@ -175,7 +189,7 @@ type Drug implements PhysicalEntity {
   isOrdered: Boolean
   maxUnitCount: Int
   minUnitCount: Int
-  name: [String]!
+  name: [String]
   oldStId: String
   referenceType: String
   schemaClass: String
@@ -198,7 +212,7 @@ type Set implements PhysicalEntity {
   isOrdered: Boolean
   maxUnitCount: Int
   minUnitCount: Int
-  name: [String]!
+  name: [String]
   oldStId: String
   referenceType: String
   schemaClass: String
@@ -223,7 +237,7 @@ type GenomeEncodedEntity implements PhysicalEntity {
   isOrdered: Boolean
   maxUnitCount: Int
   minUnitCount: Int
-  name: [String]!
+  name: [String]
   oldStId: String
   referenceType: String
   schemaClass: String
@@ -246,7 +260,7 @@ type EntityWithAccessionedSequence implements PhysicalEntity {
   isOrdered: Boolean
   maxUnitCount: Int
   minUnitCount: Int
-  name: [String]!
+  name: [String]
   oldStId: String
   referenceType: String
   schemaClass: String
@@ -269,7 +283,7 @@ type OtherEntity implements PhysicalEntity {
   isOrdered: Boolean
   maxUnitCount: Int
   minUnitCount: Int
-  name: [String]!
+  name: [String]
   oldStId: String
   referenceType: String
   schemaClass: String
@@ -292,7 +306,7 @@ type Polymer implements PhysicalEntity {
   isOrdered: Boolean
   maxUnitCount: Int
   minUnitCount: Int
-  name: [String]!
+  name: [String]
   oldStId: String
   referenceType: String
   schemaClass: String
@@ -315,7 +329,7 @@ type SimpleEntity implements PhysicalEntity {
   isOrdered: Boolean
   maxUnitCount: Int
   minUnitCount: Int
-  name: [String]!
+  name: [String]
   oldStId: String
   referenceType: String
   schemaClass: String
@@ -327,36 +341,84 @@ type SimpleEntity implements PhysicalEntity {
   systematicName: String
 }
 
+type Protein implements PhysicalEntity {
+  id: ID
+  dbId: Int
+  abbreviation: String
+  approvalSource: [String]
+  approved: Boolean
+  chain: [String]
+  checksum: String
+  comment: [String]
+  databaseName: String
+  description: [String]
+  definition: String
+  displayName: String
+  formula: String
+  geneName: [String]
+  inn: String
+  identifier: String
+  isSequenceChanged: Boolean
+  keyword: [String]
+  endCoordinate: Int
+  isChimeric: Boolean
+  isInDisease: Boolean
+  isOrdered: Boolean
+  maxUnitCount: Int
+  minUnitCount: Int
+  name: [String]
+  otherIdentifier: [String]
+  oldStId: String
+  referenceType: String
+  schemaClass: String
+  secondaryIdentifier: [String]
+  sequenceLength: Int
+  trivial: Boolean
+  type: String
+  url: String
+  variantIdentifier: String
+  speciesName: String
+  startCoordinate: Int
+  stId: String
+  stIdVersion: String
+  stoichiometryKnown: Boolean
+  systematicName: String
+  referenceEntity: [ReferenceGeneProduct]
+    @relation(name: "referenceEntity", direction: "OUT")
+}
+
 # ----- Types By "ReferenceEntity" Interface -----
-# (Type List: ReferenceEntity, ReferenceGeneProduct, ReferenceMolecule)
+# (Type List: ReferenceGeneProduct, ReferenceMolecule)
 
 type ReferenceGeneProduct implements ReferenceEntity {
   id: ID
   dbId: Int
   abbreviation: String
   approvalSource: [String]
-  approved: Boolean!
+  approved: Boolean
   chain: [String]
   checksum: String
   comment: [String]
-  databaseName: String!
+  databaseName: String
   description: [String]
-  displayName: String!
+  displayName: String
   formula: String
   geneName: [String]
   inn: String
-  identifier: String!
+  identifier: String
   isSequenceChanged: Boolean
   keyword: [String]
   name: [String]
   otherIdentifier: [String]
-  schemaClass: String!
+  schemaClass: String
   secondaryIdentifier: [String]
   sequenceLength: Int
   trivial: Boolean
   type: String
-  url: String!
-  variantIdentifier: String!
+  url: String
+  variantIdentifier: String
+  referenceDatabase: [ReferenceDatabase]
+    @relation(name: "referenceDatabase", direction: "OUT")
 }
 
 type ReferenceMolecule implements ReferenceEntity {
@@ -364,26 +426,37 @@ type ReferenceMolecule implements ReferenceEntity {
   dbId: Int
   abbreviation: String
   approvalSource: [String]
-  approved: Boolean!
+  approved: Boolean
   chain: [String]
   checksum: String
   comment: [String]
-  databaseName: String!
+  databaseName: String
   description: [String]
-  displayName: String!
+  displayName: String
   formula: String
   geneName: [String]
   inn: String
-  identifier: String!
+  identifier: String
   isSequenceChanged: Boolean
   keyword: [String]
   name: [String]
   otherIdentifier: [String]
-  schemaClass: String!
+  schemaClass: String
   secondaryIdentifier: [String]
   sequenceLength: Int
   trivial: Boolean
   type: String
-  url: String!
-  variantIdentifier: String!
+  url: String
+  variantIdentifier: String
+}
+
+# ----- Just Types -----
+
+type ReferenceDatabase {
+  id: ID
+  dbId: Int
+  accessUrl: String
+  displayName: String
+  name: [String]
+  schemaClass: String
 }
