@@ -123,6 +123,7 @@ type Pathway implements Event {
 type Reaction implements Event {
   id: ID
   dbId: Int
+  dbTypes: [String]
   schemaClass: String @neo4j_ignore
   oldStId: String
   isInDisease: Boolean
