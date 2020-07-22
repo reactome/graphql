@@ -124,7 +124,7 @@ type Reaction implements Event {
   id: ID
   dbId: Int
   dbTypes: [String]
-  schemaClass: String @neo4j_ignore
+  schemaClass: String
   oldStId: String
   isInDisease: Boolean
   releaseDate: String
@@ -253,9 +253,11 @@ type GenomeEncodedEntity implements PhysicalEntity {
 type EntityWithAccessionedSequence implements PhysicalEntity {
   id: ID
   dbId: Int
+  dbTypes: [String]
   definition: String
   displayName: String
   endCoordinate: Int
+  geneName: String
   isChimeric: Boolean
   isInDisease: Boolean
   isOrdered: Boolean
@@ -271,6 +273,8 @@ type EntityWithAccessionedSequence implements PhysicalEntity {
   stIdVersion: String
   stoichiometryKnown: Boolean
   systematicName: String
+  referenceEntity: [ReferenceGeneProduct]
+    @relation(name: "referenceEntity", direction: "OUT")
 }
 
 type OtherEntity implements PhysicalEntity {
@@ -345,39 +349,20 @@ type SimpleEntity implements PhysicalEntity {
 type Protein implements PhysicalEntity {
   id: ID
   dbId: Int
-  abbreviation: String
-  approvalSource: [String]
-  approved: Boolean
-  chain: [String]
-  checksum: String
-  comment: [String]
-  databaseName: String
-  description: [String]
+  dbTypes: [String]
   definition: String
   displayName: String
-  formula: String
-  geneName: [String]
-  inn: String
-  identifier: String
-  isSequenceChanged: Boolean
-  keyword: [String]
   endCoordinate: Int
+  geneName: String
   isChimeric: Boolean
   isInDisease: Boolean
   isOrdered: Boolean
   maxUnitCount: Int
   minUnitCount: Int
   name: [String]
-  otherIdentifier: [String]
   oldStId: String
   referenceType: String
   schemaClass: String
-  secondaryIdentifier: [String]
-  sequenceLength: Int
-  trivial: Boolean
-  type: String
-  url: String
-  variantIdentifier: String
   speciesName: String
   startCoordinate: Int
   stId: String
