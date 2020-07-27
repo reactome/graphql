@@ -12,11 +12,20 @@ npm install
 
 Start the GraphQL service:
 
+1. Development mode:-
+
+```
+npm run start:dev
+```
+
+2. Production mode:-
+
 ```
 npm start
 ```
 
-This will start the GraphQL service (by default on localhost:4000) where you can issue GraphQL requests or access GraphQL Playground in the browser:
+This will start the GraphQL service (http://0.0.0.0:4001/graphql) where you can issue GraphQL requests by accessing GraphQL Playground in the browser.
+(Preferably use incognito mode to query the database to avoid any cache problems)
 
 ![GraphQL Playground](Readme-Assets/1.png)
 

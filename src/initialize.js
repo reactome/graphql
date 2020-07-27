@@ -1,19 +1,34 @@
 export const initializeDatabase = (driver) => {
-  // const initCypher = `CALL apoc.schema.assert({}, {User: ["userId"], Business: ["businessId"], Review: ["reviewId"], Category: ["name"]})`
-  // const initCypher = null;
+  const initProtein = `match (n:EntityWithAccessionedSequence) set n :Protein`;
+  const initReaction = `match (n:ReactionLikeEvent) set n :Reaction`;
 
-  const executeQuery = (driver) => {
+  const executeQueryProtein = (driver) => {
     const session = driver.session();
     return session
-      .writeTransaction((tx) => tx.run())
+      .writeTransaction((tx) => tx.run(initProtein))
       .then()
       .finally(() => session.close());
   };
 
-  // executeQuery(driver).catch((error) => {
-  //   console.error(
-  //     "Database initialization failed to complete\n",
-  //     error.message
-  //   );
-  // });
+  const executeQueryReaction = (driver) => {
+    const session = driver.session();
+    return session
+      .writeTransaction((tx) => tx.run(initReaction))
+      .then()
+      .finally(() => session.close());
+  };
+
+  executeQueryProtein(driver).catch((error) => {
+    console.error(
+      "Database initialization failed to complete\n",
+      error.message
+    );
+  });
+
+  executeQueryReaction(driver).catch((error) => {
+    console.error(
+      "Database initialization failed to complete\n",
+      error.message
+    );
+  });
 };

@@ -18,6 +18,7 @@
 interface Event {
   id: ID
   dbId: Int
+  dbTypes: [String]
   schemaClass: String
   oldStId: String
   isInDisease: Boolean
@@ -42,6 +43,7 @@ interface Event {
 interface PhysicalEntity {
   id: ID
   dbId: Int
+  dbTypes: [String]
   definition: String
   displayName: String
   endCoordinate: Int
@@ -65,6 +67,7 @@ interface PhysicalEntity {
 interface ReferenceEntity {
   id: ID
   dbId: Int
+  dbTypes: [String]
   abbreviation: String
   approvalSource: [String]
   approved: Boolean
@@ -97,6 +100,7 @@ interface ReferenceEntity {
 type Pathway implements Event {
   id: ID
   dbId: Int
+  dbTypes: [String]
   schemaClass: String
   oldStId: String
   isInDisease: Boolean
@@ -146,7 +150,7 @@ type Reaction implements Event {
   templateEvent: [Event] @relation(name: "templateEvent", direction: "OUT")
   reverseReaction: [Reaction]
     @relation(name: "reverseReaction", direction: "BOTH")
-  input: [PhysicalEntity] @relation(name: "input", direction: "OUT")
+  input: [PhysicalEntity] #@neo4j_ignore #@relation(name: "input", direction: "OUT")
   #@neo4j_ignore
   #@cypher(statement: "MATCH (this)-[:input]->(p:PhysicalEntity) RETURN p") # @relation(name: "input", direction: "OUT")
   output: [PhysicalEntity] @relation(name: "output", direction: "OUT")
@@ -159,6 +163,7 @@ type Reaction implements Event {
 type Complex implements PhysicalEntity {
   id: ID
   dbId: Int
+  dbTypes: [String]
   definition: String
   displayName: String
   endCoordinate: Int
@@ -182,6 +187,7 @@ type Complex implements PhysicalEntity {
 type Drug implements PhysicalEntity {
   id: ID
   dbId: Int
+  dbTypes: [String]
   definition: String
   displayName: String
   endCoordinate: Int
@@ -205,6 +211,7 @@ type Drug implements PhysicalEntity {
 type Set implements PhysicalEntity {
   id: ID
   dbId: Int
+  dbTypes: [String]
   definition: String
   displayName: String
   endCoordinate: Int
@@ -230,6 +237,7 @@ type Set implements PhysicalEntity {
 type GenomeEncodedEntity implements PhysicalEntity {
   id: ID
   dbId: Int
+  dbTypes: [String]
   definition: String
   displayName: String
   endCoordinate: Int
@@ -280,6 +288,7 @@ type EntityWithAccessionedSequence implements PhysicalEntity {
 type OtherEntity implements PhysicalEntity {
   id: ID
   dbId: Int
+  dbTypes: [String]
   definition: String
   displayName: String
   endCoordinate: Int
@@ -303,6 +312,7 @@ type OtherEntity implements PhysicalEntity {
 type Polymer implements PhysicalEntity {
   id: ID
   dbId: Int
+  dbTypes: [String]
   definition: String
   displayName: String
   endCoordinate: Int
@@ -326,6 +336,7 @@ type Polymer implements PhysicalEntity {
 type SimpleEntity implements PhysicalEntity {
   id: ID
   dbId: Int
+  dbTypes: [String]
   definition: String
   displayName: String
   endCoordinate: Int
@@ -379,6 +390,7 @@ type Protein implements PhysicalEntity {
 type ReferenceGeneProduct implements ReferenceEntity {
   id: ID
   dbId: Int
+  dbTypes: [String]
   abbreviation: String
   approvalSource: [String]
   approved: Boolean
@@ -410,6 +422,7 @@ type ReferenceGeneProduct implements ReferenceEntity {
 type ReferenceMolecule implements ReferenceEntity {
   id: ID
   dbId: Int
+  dbTypes: [String]
   abbreviation: String
   approvalSource: [String]
   approved: Boolean
@@ -441,6 +454,7 @@ type ReferenceMolecule implements ReferenceEntity {
 type ReferenceDatabase {
   id: ID
   dbId: Int
+  dbTypes: [String]
   accessUrl: String
   displayName: String
   name: [String]
