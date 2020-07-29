@@ -17,13 +17,17 @@ import pathwayResolver from "./resolvers/Event/pathway";
 import reactionResolver from "./resolvers/Event/reaction";
 
 // ReferenceEntity Interface
-import referenceEntityResolver from "./resolvers/ReferenceEntity/referenceEntity"
-import referenceDatabaseResolver from "./resolvers/ReferenceEntity/referenceDatabase"
-import referenceGeneProductResolver from "./resolvers/ReferenceEntity/referenceDatabase"
-import referenceMoleculeResolver from "./resolvers/ReferenceEntity/referenceMolecule"
+import referenceEntityResolver from "./resolvers/ReferenceEntity/referenceEntity";
+import referenceGeneProductResolver from "./resolvers/ReferenceEntity/referenceGeneProduct";
+import referenceMoleculeResolver from "./resolvers/ReferenceEntity/referenceMolecule";
+
+// ReferenceDatabase
+import referenceDatabaseResolver from "./resolvers/ReferenceEntity/referenceDatabase";
 
 
 const resolvers = {
+  // Entry points for GraphQL playground 
+  // (Reaction, Pathway, Protein)
   Query: {
     Reaction: (parent, args, context, info) => {
       let session = context.driver.session(),
@@ -78,6 +82,8 @@ const resolvers = {
   ReferenceEntity: referenceEntityResolver,
   ReferenceGeneProduct: referenceGeneProductResolver,
   ReferenceMolecule: referenceMoleculeResolver,
+
+  // ReferenceDatabase
   ReferenceDatabase: referenceDatabaseResolver
 };
 

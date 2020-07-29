@@ -1,6 +1,5 @@
 # --------- Query - (Entry points) ---------
 type Query {
-  # PhysicalEntity(dbId: Int!): PhysicalEntity
   Reaction(dbId: Int!): Reaction
   Pathway(dbId: Int!): Pathway
   Protein(dbId: Int!): Protein
@@ -72,7 +71,6 @@ interface ReferenceEntity {
   type: String
   url: String
   variantIdentifier: String
-
 }
 
 # --------- Types by "PhysicalEntity" ---------
@@ -191,7 +189,6 @@ type Protein implements PhysicalEntity {
   stoichiometryKnown: Boolean
   systematicName: String
   referenceEntity: [ReferenceGeneProduct]
-  #@relation(name: "referenceEntity", direction: "OUT")
 }
 
 # --------- Types by "Event" ---------
@@ -223,14 +220,6 @@ type Reaction implements Event {
   reverseReaction: [Reaction]
   input: [PhysicalEntity]
   output: [PhysicalEntity]
-
-  #@relation(name: "input", direction: "OUT")
-  #@relation(name: "reverseReaction", direction: "BOTH")
-  #@relation(name: "templateEvent", direction: "OUT")
-  #@relation(name: "output", direction: "OUT")
-  #@neo4j_ignore #@relation(name: "input", direction: "OUT")
-  #@neo4j_ignore
-  #@cypher(statement: "MATCH (this)-[:input]->(p:PhysicalEntity) RETURN p") # @relation(name: "input", direction: "OUT")
 }
 
 type Pathway implements Event {
@@ -257,7 +246,6 @@ type Pathway implements Event {
   isChimeric: Boolean
   systematicName: String
   hasEvent: [Event]
-  #@relation(name: "hasEvent", direction: "OUT")
 }
 
 # ----- Types By "ReferenceEntity" -----
@@ -292,7 +280,6 @@ type ReferenceGeneProduct implements ReferenceEntity {
   url: String
   variantIdentifier: String
   referenceDatabase: [ReferenceDatabase]
-  #@relation(name: "referenceDatabase", direction: "OUT")
 }
 
 type ReferenceMolecule implements ReferenceEntity {
@@ -326,7 +313,7 @@ type ReferenceMolecule implements ReferenceEntity {
 }
 
 # ----- Just Types -----
-type ReferenceDatabase implements ReferenceEntity {
+type ReferenceDatabase {
   id: ID
   dbId: Int
   dbTypes: [String]
@@ -334,26 +321,4 @@ type ReferenceDatabase implements ReferenceEntity {
   displayName: String
   name: [String]
   schemaClass: String
-
-  abbreviation: String
-  approvalSource: [String]
-  approved: Boolean
-  chain: [String]
-  checksum: String
-  comment: [String]
-  databaseName: String
-  description: [String]
-  formula: String
-  geneName: [String]
-  inn: String
-  identifier: String
-  isSequenceChanged: Boolean
-  keyword: [String]
-  otherIdentifier: [String]
-  secondaryIdentifier: [String]
-  sequenceLength: Int
-  trivial: Boolean
-  type: String
-  url: String
-  variantIdentifier: String
 }

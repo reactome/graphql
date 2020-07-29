@@ -3,7 +3,6 @@ import express from "express";
 import neo4j from "neo4j-driver";
 import { makeAugmentedSchema } from "neo4j-graphql-js";
 import dotenv from "dotenv";
-
 import typeDefs from "./graphql-schema";
 import initializeDatabase from "./initialize";
 import resolvers from "./resolvers";

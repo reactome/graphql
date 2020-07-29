@@ -1,3 +1,6 @@
+// "EntityWithAccessionedSequence" is named as "Protein"
+// Protein === EntityWithAccessionedSequence
+
 import { dbId, id, dbTypes } from "../common";
 
 const proteinProperties = [

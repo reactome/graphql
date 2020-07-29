@@ -20,9 +20,6 @@ const reactionProperties = [
   "diagramWidth",
   "isChimeric",
   "systematicName",
-  //templateEvent: [Event] @relation(name: "templateEvent", direction: "OUT")
-  //reverseReaction: [Reaction] @relation(name: "reverseReaction", direction: "BOTH")
-  //output: [PhysicalEntity] @relation(name: "output", direction: "OUT")
 ];
 
 const reactionResolver = reactionProperties.reduce((object, propertyName) => {
@@ -44,7 +41,6 @@ const reactionResolver = reactionProperties.reduce((object, propertyName) => {
   };
   return object;
 }, {});
-
 
 const inputResolver = (obj, args, context, info) => {
   let session = context.driver.session(),
@@ -97,7 +93,6 @@ const reverseReactionResolver = (obj, args, context, info) => {
     });
   });
 };
-
 
 export default {
   ...reactionResolver,
