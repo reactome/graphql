@@ -1,20 +1,24 @@
-# On current DB
-# 1. match (n:ReactionLikeEvent) set n :Reaction
-# 2. WORKS --> match (n:EntityWithAccessionedSequence) set n :Protein
-# 3. match (n:Reaction) set n :PhysicalEntity
+# --------- Query - (Entry points) ---------
+type Query {
+  # PhysicalEntity(dbId: Int!): PhysicalEntity
+  Reaction(dbId: Int!): Reaction
+  Pathway(dbId: Int!): Pathway
+  Protein(dbId: Int!): Protein
+}
 
-# Add these commands:
-# ----- Useful
-# 1. match (n:EntityWithAccessionedSequence) set n :Protein
+# ---------- Interfaces ----------
+# (PhysicalEntity, Event, ReferenceEntity)
+interface PhysicalEntity {
+  id: ID
+  dbId: Int
+  displayName: String
+  name: [String]
+  schemaClass: String
+  speciesName: String
+  stId: String
+  dbTypes: [String]
+}
 
-# ----- Not-Useful
-# 2. match (n:ReactionLikeEvent) set n :Reaction
-# 3. match (n:Reaction) set n :ReactionLikeEvent
-# 4. match (n:Reaction) set n :PhysicalEntity
-
-# Reactome TypeDefs
-
-# ------------ Interface List
 interface Event {
   id: ID
   dbId: Int
@@ -37,30 +41,6 @@ interface Event {
   doi: String
   diagramWidth: Int
   isChimeric: Boolean
-  systematicName: String
-}
-
-interface PhysicalEntity {
-  id: ID
-  dbId: Int
-  dbTypes: [String]
-  definition: String
-  displayName: String
-  endCoordinate: Int
-  isChimeric: Boolean
-  isInDisease: Boolean
-  isOrdered: Boolean
-  maxUnitCount: Int
-  minUnitCount: Int
-  name: [String]
-  oldStId: String
-  referenceType: String
-  schemaClass: String
-  speciesName: String
-  startCoordinate: Int
-  stId: String
-  stIdVersion: String
-  stoichiometryKnown: Boolean
   systematicName: String
 }
 
@@ -92,269 +72,99 @@ interface ReferenceEntity {
   type: String
   url: String
   variantIdentifier: String
+
 }
 
-# ----- Types By "Event" Interface -----
-# (Type List: Pathway, Reaction)
-
-type Pathway implements Event {
-  id: ID
-  dbId: Int
-  dbTypes: [String]
-  schemaClass: String
-  oldStId: String
-  isInDisease: Boolean
-  releaseDate: String
-  displayName: String
-  stId: String
-  speciesName: String
-  diagramHeight: Int
-  hasEHLD: Boolean
-  stIdVersion: String
-  releaseStatus: String
-  name: [String]
-  definition: String
-  hasDiagram: Boolean
-  isInferred: Boolean
-  doi: String
-  diagramWidth: Int
-  isChimeric: Boolean
-  systematicName: String
-  hasEvent: [Event] @relation(name: "hasEvent", direction: "OUT")
-}
-# extend type Pathway @additionalLabels(labels: ["newPathwayLabel"])
-
-type Reaction implements Event {
-  id: ID
-  dbId: Int
-  dbTypes: [String]
-  schemaClass: String
-  oldStId: String
-  isInDisease: Boolean
-  releaseDate: String
-  displayName: String
-  stId: String
-  speciesName: String
-  diagramHeight: Int
-  hasEHLD: Boolean
-  stIdVersion: String
-  releaseStatus: String
-  name: [String]
-  definition: String
-  hasDiagram: Boolean
-  isInferred: Boolean
-  doi: String
-  diagramWidth: Int
-  isChimeric: Boolean
-  systematicName: String
-  templateEvent: [Event] @relation(name: "templateEvent", direction: "OUT")
-  reverseReaction: [Reaction]
-    @relation(name: "reverseReaction", direction: "BOTH")
-  input: [PhysicalEntity] #@neo4j_ignore #@relation(name: "input", direction: "OUT")
-  #@neo4j_ignore
-  #@cypher(statement: "MATCH (this)-[:input]->(p:PhysicalEntity) RETURN p") # @relation(name: "input", direction: "OUT")
-  output: [PhysicalEntity] @relation(name: "output", direction: "OUT")
-}
-#@neo4j_ignore
-
-# ----- Types By "PhysicalEntity" Interface -----
-# (Type List: Complex, Drug, Set, GenomeEncodedEntity, EntityWithAccessionedSequence, OtherEntity, Polymer, SimpleEntity, Protein)
-
+# --------- Types by "PhysicalEntity" ---------
+# (Complex, Drug, Set, GenomeEncodedEntity, EntityWithAccessionedSequence, OtherEntity, Polymer, SimpleEntity, Protein)
 type Complex implements PhysicalEntity {
   id: ID
   dbId: Int
-  dbTypes: [String]
-  definition: String
   displayName: String
-  endCoordinate: Int
-  isChimeric: Boolean
-  isInDisease: Boolean
-  isOrdered: Boolean
-  maxUnitCount: Int
-  minUnitCount: Int
   name: [String]
-  oldStId: String
-  referenceType: String
   schemaClass: String
   speciesName: String
-  startCoordinate: Int
   stId: String
-  stIdVersion: String
-  stoichiometryKnown: Boolean
-  systematicName: String
+  dbTypes: [String]
 }
 
 type Drug implements PhysicalEntity {
   id: ID
   dbId: Int
-  dbTypes: [String]
-  definition: String
   displayName: String
-  endCoordinate: Int
-  isChimeric: Boolean
-  isInDisease: Boolean
-  isOrdered: Boolean
-  maxUnitCount: Int
-  minUnitCount: Int
   name: [String]
-  oldStId: String
-  referenceType: String
   schemaClass: String
   speciesName: String
-  startCoordinate: Int
   stId: String
-  stIdVersion: String
-  stoichiometryKnown: Boolean
-  systematicName: String
+  dbTypes: [String]
 }
 
 type Set implements PhysicalEntity {
   id: ID
   dbId: Int
-  dbTypes: [String]
-  definition: String
   displayName: String
-  endCoordinate: Int
-  isChimeric: Boolean
-  isInDisease: Boolean
-  isOrdered: Boolean
-  maxUnitCount: Int
-  minUnitCount: Int
   name: [String]
-  oldStId: String
-  referenceType: String
   schemaClass: String
   speciesName: String
-  startCoordinate: Int
   stId: String
-  stIdVersion: String
-  stoichiometryKnown: Boolean
-  systematicName: String
-  members: [PhysicalEntity] @relation(name: "hasMember", direction: "OUT")
-  candidates: [PhysicalEntity] @relation(name: "hasCandidate", direction: "OUT")
+  dbTypes: [String]
+  members: [PhysicalEntity]
+  candidates: [PhysicalEntity]
 }
 
 type GenomeEncodedEntity implements PhysicalEntity {
   id: ID
   dbId: Int
-  dbTypes: [String]
-  definition: String
   displayName: String
-  endCoordinate: Int
-  isChimeric: Boolean
-  isInDisease: Boolean
-  isOrdered: Boolean
-  maxUnitCount: Int
-  minUnitCount: Int
   name: [String]
-  oldStId: String
-  referenceType: String
   schemaClass: String
   speciesName: String
-  startCoordinate: Int
   stId: String
-  stIdVersion: String
-  stoichiometryKnown: Boolean
-  systematicName: String
+  dbTypes: [String]
 }
 
 type EntityWithAccessionedSequence implements PhysicalEntity {
   id: ID
   dbId: Int
-  dbTypes: [String]
-  definition: String
   displayName: String
-  endCoordinate: Int
-  geneName: String
-  isChimeric: Boolean
-  isInDisease: Boolean
-  isOrdered: Boolean
-  maxUnitCount: Int
-  minUnitCount: Int
   name: [String]
-  oldStId: String
-  referenceType: String
   schemaClass: String
   speciesName: String
-  startCoordinate: Int
   stId: String
-  stIdVersion: String
-  stoichiometryKnown: Boolean
-  systematicName: String
-  referenceEntity: [ReferenceGeneProduct]
-    @relation(name: "referenceEntity", direction: "OUT")
+  dbTypes: [String]
 }
 
 type OtherEntity implements PhysicalEntity {
   id: ID
   dbId: Int
-  dbTypes: [String]
-  definition: String
   displayName: String
-  endCoordinate: Int
-  isChimeric: Boolean
-  isInDisease: Boolean
-  isOrdered: Boolean
-  maxUnitCount: Int
-  minUnitCount: Int
   name: [String]
-  oldStId: String
-  referenceType: String
   schemaClass: String
   speciesName: String
-  startCoordinate: Int
   stId: String
-  stIdVersion: String
-  stoichiometryKnown: Boolean
-  systematicName: String
+  dbTypes: [String]
 }
 
 type Polymer implements PhysicalEntity {
   id: ID
   dbId: Int
-  dbTypes: [String]
-  definition: String
   displayName: String
-  endCoordinate: Int
-  isChimeric: Boolean
-  isInDisease: Boolean
-  isOrdered: Boolean
-  maxUnitCount: Int
-  minUnitCount: Int
   name: [String]
-  oldStId: String
-  referenceType: String
   schemaClass: String
   speciesName: String
-  startCoordinate: Int
   stId: String
-  stIdVersion: String
-  stoichiometryKnown: Boolean
-  systematicName: String
+  dbTypes: [String]
 }
 
 type SimpleEntity implements PhysicalEntity {
   id: ID
   dbId: Int
-  dbTypes: [String]
-  definition: String
   displayName: String
-  endCoordinate: Int
-  isChimeric: Boolean
-  isInDisease: Boolean
-  isOrdered: Boolean
-  maxUnitCount: Int
-  minUnitCount: Int
   name: [String]
-  oldStId: String
-  referenceType: String
   schemaClass: String
   speciesName: String
-  startCoordinate: Int
   stId: String
-  stIdVersion: String
-  stoichiometryKnown: Boolean
-  systematicName: String
+  dbTypes: [String]
 }
 
 type Protein implements PhysicalEntity {
@@ -381,17 +191,83 @@ type Protein implements PhysicalEntity {
   stoichiometryKnown: Boolean
   systematicName: String
   referenceEntity: [ReferenceGeneProduct]
-    @relation(name: "referenceEntity", direction: "OUT")
+  #@relation(name: "referenceEntity", direction: "OUT")
 }
 
-# ----- Types By "ReferenceEntity" Interface -----
-# (Type List: ReferenceGeneProduct, ReferenceMolecule)
+# --------- Types by "Event" ---------
+# (Reaction, Pathway)
+type Reaction implements Event {
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  schemaClass: String
+  oldStId: String
+  isInDisease: Boolean
+  releaseDate: String
+  displayName: String
+  stId: String
+  speciesName: String
+  diagramHeight: Int
+  hasEHLD: Boolean
+  stIdVersion: String
+  releaseStatus: String
+  name: [String]
+  definition: String
+  hasDiagram: Boolean
+  isInferred: Boolean
+  doi: String
+  diagramWidth: Int
+  isChimeric: Boolean
+  systematicName: String
+  templateEvent: [Event]
+  reverseReaction: [Reaction]
+  input: [PhysicalEntity]
+  output: [PhysicalEntity]
 
+  #@relation(name: "input", direction: "OUT")
+  #@relation(name: "reverseReaction", direction: "BOTH")
+  #@relation(name: "templateEvent", direction: "OUT")
+  #@relation(name: "output", direction: "OUT")
+  #@neo4j_ignore #@relation(name: "input", direction: "OUT")
+  #@neo4j_ignore
+  #@cypher(statement: "MATCH (this)-[:input]->(p:PhysicalEntity) RETURN p") # @relation(name: "input", direction: "OUT")
+}
+
+type Pathway implements Event {
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  schemaClass: String
+  oldStId: String
+  isInDisease: Boolean
+  releaseDate: String
+  displayName: String
+  stId: String
+  speciesName: String
+  diagramHeight: Int
+  hasEHLD: Boolean
+  stIdVersion: String
+  releaseStatus: String
+  name: [String]
+  definition: String
+  hasDiagram: Boolean
+  isInferred: Boolean
+  doi: String
+  diagramWidth: Int
+  isChimeric: Boolean
+  systematicName: String
+  hasEvent: [Event]
+  #@relation(name: "hasEvent", direction: "OUT")
+}
+
+# ----- Types By "ReferenceEntity" -----
+# (ReferenceGeneProduct, ReferenceMolecule)
 type ReferenceGeneProduct implements ReferenceEntity {
   id: ID
   dbId: Int
   dbTypes: [String]
   abbreviation: String
+  accessUrl: String
   approvalSource: [String]
   approved: Boolean
   chain: [String]
@@ -416,7 +292,7 @@ type ReferenceGeneProduct implements ReferenceEntity {
   url: String
   variantIdentifier: String
   referenceDatabase: [ReferenceDatabase]
-    @relation(name: "referenceDatabase", direction: "OUT")
+  #@relation(name: "referenceDatabase", direction: "OUT")
 }
 
 type ReferenceMolecule implements ReferenceEntity {
@@ -450,8 +326,7 @@ type ReferenceMolecule implements ReferenceEntity {
 }
 
 # ----- Just Types -----
-
-type ReferenceDatabase {
+type ReferenceDatabase implements ReferenceEntity {
   id: ID
   dbId: Int
   dbTypes: [String]
@@ -459,4 +334,26 @@ type ReferenceDatabase {
   displayName: String
   name: [String]
   schemaClass: String
+
+  abbreviation: String
+  approvalSource: [String]
+  approved: Boolean
+  chain: [String]
+  checksum: String
+  comment: [String]
+  databaseName: String
+  description: [String]
+  formula: String
+  geneName: [String]
+  inn: String
+  identifier: String
+  isSequenceChanged: Boolean
+  keyword: [String]
+  otherIdentifier: [String]
+  secondaryIdentifier: [String]
+  sequenceLength: Int
+  trivial: Boolean
+  type: String
+  url: String
+  variantIdentifier: String
 }

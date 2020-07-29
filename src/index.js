@@ -1,11 +1,12 @@
-import { typeDefs } from "./graphql-schema";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import neo4j from "neo4j-driver";
 import { makeAugmentedSchema } from "neo4j-graphql-js";
 import dotenv from "dotenv";
-import { initializeDatabase } from "./initialize";
-//import { resolvers } from "./resolvers";
+
+import typeDefs from "./graphql-schema";
+import initializeDatabase from "./initialize";
+import resolvers from "./resolvers";
 
 // set environment variables from .env
 dotenv.config();
@@ -19,15 +20,6 @@ const app = express();
  * in generated queries and/or mutations. Read more in the docs:
  * https://grandstack.io/docs/neo4j-graphql-js-api.html#makeaugmentedschemaoptions-graphqlschema
  */
-
-const schema = makeAugmentedSchema({
-  typeDefs,
-  //resolvers,
-  config: {
-    query: true,
-    mutation: false,
-  },
-});
 
 /*
  * Create a Neo4j driver instance to connect to the database
@@ -71,8 +63,9 @@ init(driver);
  * generated resolvers to connect to the database.
  */
 const server = new ApolloServer({
+  typeDefs,
+  resolvers,
   context: { driver, neo4jDatabase: process.env.NEO4J_DATABASE },
-  schema: schema,
   introspection: true,
   playground: true,
 });
