@@ -37,9 +37,8 @@ export default {
   id,
   dbTypes,
   __resolveType: (obj, context, info) => {
-    drugClasses = ["ChemicalDrug", "ProteinDrug", "RNADrug"]
     const schemaClass = obj.properties.schemaClass;
-
+    const drugClasses = ["ChemicalDrug", "ProteinDrug", "RNADrug"]
     if (schemaClass === "DefinedSet" || schemaClass === "CandidateSet") {
       return "Set"; // DefinedSet and CandidateSet in the graph database are represented as Set in the GraphQL interface
     }

@@ -94,6 +94,19 @@ const reverseReactionResolver = (obj, args, context, info) => {
   });
 };
 
+const catalystResolver = (obj, args, context, info) => {
+  let session = context.driver.session(),
+    params = { dbId: obj.properties.dbId.toNumber() },
+    query = `MATCH (rle:ReactionLikeEvent)-[:catalystActivity]->(ca:CatalystActivity) WHERE rle.dbId = $dbId RETURN ca`;
+
+  return session.run(query, params).then((result) => {
+    return result.records.map((rec) => {
+      const record = rec.get("ca");
+      return record;
+    });
+  });
+};
+
 export default {
   ...reactionResolver,
   dbId,
@@ -103,4 +116,5 @@ export default {
   "output": outputResolver,
   "templateEvent": templateEventResolver,
   "reverseReaction": reverseReactionResolver,
+  "catalyst": catalystResolver
 };

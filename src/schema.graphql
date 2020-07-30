@@ -222,6 +222,18 @@ type Reaction implements Event {
   reverseReaction: [Reaction]
   input: [PhysicalEntity]
   output: [PhysicalEntity]
+  catalyst: [Catalyst]
+}
+
+type Catalyst {
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  displayName: String
+  stId: String
+  schemaClass: String
+  physicalEntity: [PhysicalEntity]
+  activeUnit: [PhysicalEntity]
 }
 
 type Pathway implements Event {

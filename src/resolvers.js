@@ -15,6 +15,7 @@ import simpleEntityResolver from "./resolvers/PhysicalEntity/simpleEntity";
 import eventResolver from "./resolvers/Event/event";
 import pathwayResolver from "./resolvers/Event/pathway";
 import reactionResolver from "./resolvers/Event/reaction";
+import catalystResolver from "./resolvers/Event/catalyst";
 
 // ReferenceEntity Interface
 import referenceEntityResolver from "./resolvers/ReferenceEntity/referenceEntity";
@@ -77,6 +78,7 @@ const resolvers = {
   Event: eventResolver,
   Pathway: pathwayResolver,
   Reaction: reactionResolver,
+  Catalyst: catalystResolver,
 
   // ReferenceEntity
   ReferenceEntity: referenceEntityResolver,
