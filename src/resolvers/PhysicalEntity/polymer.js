@@ -28,9 +28,23 @@ const polymerResolver = polymerProperties.reduce((object, propertyName) => {
     return object;
 }, {});
 
+const repeatedUnitResolver = (obj, args, context, info) => {
+    let session = context.driver.session(),
+        params = { dbId: obj.properties.dbId.toNumber() },
+        query = `(p:Polymer)-[:repeatedUnit]->(pe:PhysicalEntity) WHERE p.dbId = $dbId RETURN pe`;
+
+    return session.run(query, params).then((result) => {
+        return result.records.map((rec) => {
+            const record = rec.get("pe");
+            return record;
+        });
+    });
+};
+
 export default {
     ...polymerResolver,
     dbId,
     id,
     dbTypes,
+    "repeatedUnit": repeatedUnitResolver
 };

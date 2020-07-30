@@ -28,9 +28,37 @@ const setResolver = setProperties.reduce((object, propertyName) => {
     return object;
 }, {});
 
+const hasCandidateResolver = (obj, args, context, info) => {
+    let session = context.driver.session(),
+        params = { dbId: obj.properties.dbId.toNumber() },
+        query = `(c:CandidateSet)-[:hasCandidate]->(pe:PhysicalEntity) WHERE c.dbId = $dbId RETURN pe`;
+
+    return session.run(query, params).then((result) => {
+        return result.records.map((rec) => {
+            const record = rec.get("pe");
+            return record;
+        });
+    });
+};
+
+const hasMemberResolver = (obj, args, context, info) => {
+    let session = context.driver.session(),
+        params = { dbId: obj.properties.dbId.toNumber() },
+        query = `(c:CandidateSet)-[:hasComponent]->(pe:PhysicalEntity) WHERE c.dbId = $dbId RETURN pe`;
+
+    return session.run(query, params).then((result) => {
+        return result.records.map((rec) => {
+            const record = rec.get("pe");
+            return record;
+        });
+    });
+};
+
 export default {
     ...setResolver,
     dbId,
     id,
     dbTypes,
+    "candidates": hasCandidateResolver,
+    "members": hasMemberResolver
 };

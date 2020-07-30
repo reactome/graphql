@@ -57,7 +57,7 @@ export default {
     dbTypes,
     __resolveType: (obj, context, info) => {
         const schemaClass = obj.properties.schemaClass;
-        referenceEntityClasses = ["ReferenceEntity", "ReferenceGeneProduct", "ReferenceMolecule"]
+        referenceEntityClasses = ["ReferenceGeneProduct", "ReferenceMolecule"]
         if (referenceEntityClasses.includes(schemaClass)) {
             return schemaClass;
         }

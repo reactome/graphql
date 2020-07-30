@@ -37,11 +37,14 @@ export default {
   id,
   dbTypes,
   __resolveType: (obj, context, info) => {
+    drugClasses = ["ChemicalDrug", "ProteinDrug", "RNADrug"]
     const schemaClass = obj.properties.schemaClass;
+
     if (schemaClass === "DefinedSet" || schemaClass === "CandidateSet") {
       return "Set"; // DefinedSet and CandidateSet in the graph database are represented as Set in the GraphQL interface
-    } else {
-      return schemaClass; // Other PhysicalEntity types are represented by the same name in the graph database as in the GraphQL interface
+    }
+    if (drugClasses.includes(schemaClass)) {
+      return "Drug";
     }
   },
 };

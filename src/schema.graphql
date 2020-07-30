@@ -84,6 +84,7 @@ type Complex implements PhysicalEntity {
   speciesName: String
   stId: String
   dbTypes: [String]
+  hasComponent: [PhysicalEntity]
 }
 
 type Drug implements PhysicalEntity {
@@ -152,6 +153,7 @@ type Polymer implements PhysicalEntity {
   speciesName: String
   stId: String
   dbTypes: [String]
+  repeatedUnit: [PhysicalEntity]
 }
 
 type SimpleEntity implements PhysicalEntity {
