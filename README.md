@@ -4,6 +4,15 @@
 
 ## Quick Start
 
+### Get Reactome's Neo4j database running
+
+Execute docker command:
+
+```
+docker run -p 7687:7687 -p 7474:7474 -e NEO4J_dbms_allow__upgrade=true -v $(pwd)/graph.db:/var/lib/neo4j/data/databases/graph.db neo4j:3.5.17
+```
+(It is recommended to open the Neo4j database link in incognito mode to avoid cache problems).
+
 Install dependencies:
 
 ```
@@ -25,7 +34,6 @@ npm start
 ```
 
 This will start the GraphQL service (http://0.0.0.0:4001/graphql) where you can issue GraphQL requests by accessing GraphQL Playground in the browser.
-(Preferably use incognito mode to query the database to avoid any cache problems)
 
 ![GraphQL Playground](Readme-Assets/1.png)
 
