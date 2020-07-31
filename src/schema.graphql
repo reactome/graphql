@@ -2,7 +2,14 @@
 type Query {
   Reaction(dbId: Int!): Reaction
   Pathway(dbId: Int!): Pathway
-  Protein(dbId: Int!): Protein
+  Protein(dbId: Int!, valueType: ProteinValueType): [Protein]
+}
+
+enum ProteinValueType {
+	DB_ID
+	ENTITY_NAME
+	GENE_NAME
+	UNIPROT_IDENTIFIER
 }
 
 # ---------- Interfaces ----------
@@ -84,7 +91,7 @@ type Complex implements PhysicalEntity {
   speciesName: String
   stId: String
   dbTypes: [String]
-  hasComponent: [PhysicalEntity]
+  components: [PhysicalEntity]
 }
 
 type Drug implements PhysicalEntity {
@@ -226,6 +233,7 @@ type Reaction implements Event {
 }
 
 type Catalyst {
+  # type Catalyst is used by type "Reaction"
   id: ID
   dbId: Int
   dbTypes: [String]

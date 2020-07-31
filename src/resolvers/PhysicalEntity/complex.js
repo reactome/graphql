@@ -46,5 +46,5 @@ export default {
     dbId,
     id,
     dbTypes,
-    "hasComponent": hasComponentResolver
+    "components": hasComponentResolver
 };

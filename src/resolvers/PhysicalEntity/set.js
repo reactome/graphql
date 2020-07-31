@@ -44,7 +44,7 @@ const hasCandidateResolver = (obj, args, context, info) => {
 const hasMemberResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
-        query = `(c:CandidateSet)-[:hasComponent]->(pe:PhysicalEntity) WHERE c.dbId = $dbId RETURN pe`;
+        query = `(es:EntitySet)-[:hasMember]->(pe:PhysicalEntity) WHERE es.dbId = $dbId RETURN pe`;
 
     return session.run(query, params).then((result) => {
         return result.records.map((rec) => {

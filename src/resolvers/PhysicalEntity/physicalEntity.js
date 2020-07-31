@@ -41,9 +41,10 @@ export default {
     const drugClasses = ["ChemicalDrug", "ProteinDrug", "RNADrug"]
     if (schemaClass === "DefinedSet" || schemaClass === "CandidateSet") {
       return "Set"; // DefinedSet and CandidateSet in the graph database are represented as Set in the GraphQL interface
-    }
-    if (drugClasses.includes(schemaClass)) {
+    } else if (drugClasses.includes(schemaClass)) {
       return "Drug";
+    } else {
+      return schemaClass;
     }
   },
 };
