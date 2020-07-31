@@ -13,13 +13,13 @@ docker run -p 7687:7687 -p 7474:7474 -e NEO4J_dbms_allow__upgrade=true -v $(pwd)
 ```
 (It is recommended to open the Neo4j database link in incognito mode to avoid cache problems).
 
-Install dependencies:
+### Clone/Download project diles and install dependencies:
 
 ```
 npm install
 ```
 
-Start the GraphQL service:
+### Start the GraphQL service:
 
 1. Development mode:-
 
@@ -37,7 +37,7 @@ This will start the GraphQL service (http://0.0.0.0:4001/graphql) where you can 
 
 ![GraphQL Playground](Readme-Assets/1.png)
 
-## Configure
+### Configure
 
 Set your Neo4j connection string and credentials in `.env`. For example:
 
