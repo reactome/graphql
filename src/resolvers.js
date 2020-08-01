@@ -1,4 +1,3 @@
-
 // PhysicalEntity Interface
 import physicalEntityResolver from "./resolvers/PhysicalEntity/physicalEntity";
 import complexResolver from "./resolvers/PhysicalEntity/complex";
@@ -52,8 +51,20 @@ const resolvers = {
     },
     Protein: (parent, args, context, info) => {
       let session = context.driver.session(),
-        params = { dbId: args.dbId },
-        query = `MATCH (ewas:EntityWithAccessionedSequence) WHERE ewas.dbId = $dbId RETURN ewas`;
+        params = { value: args.value, valueType: args.valueType },
+        query = `MATCH (ewas:EntityWithAccessionedSequence) 
+                 WHERE (ewas.valueType = $valueType)
+                 AND (ewas.value = $value OR ewas.value CONTAINS $value)
+                 RETURN ewas
+                `;
+
+      /*
+      REFERENCES:
+
+      Cypher CONTAINS operator - https://neo4j.com/docs/cypher-manual/current/clauses/where/#match-string-contains
+
+      Cypher AND, OR operators - https://neo4j.com/docs/cypher-manual/current/clauses/where/#boolean-operations
+      */
 
       return session.run(query, params).then((result) => {
         const record = result.records[0].get("ewas");
@@ -86,7 +97,7 @@ const resolvers = {
   ReferenceMolecule: referenceMoleculeResolver,
 
   // ReferenceDatabase
-  ReferenceDatabase: referenceDatabaseResolver
+  ReferenceDatabase: referenceDatabaseResolver,
 };
 
 export default resolvers;

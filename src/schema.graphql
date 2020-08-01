@@ -2,14 +2,13 @@
 type Query {
   Reaction(dbId: Int!): Reaction
   Pathway(dbId: Int!): Pathway
-  Protein(dbId: Int!, valueType: ProteinValueType): [Protein]
+  Protein(value: String!, valueType: ProteinValueType!): [Protein]
 }
 
 enum ProteinValueType {
-	DB_ID
-	ENTITY_NAME
-	GENE_NAME
-	UNIPROT_IDENTIFIER
+	dbId
+	geneName
+  speciesName
 }
 
 # ---------- Interfaces ----------
