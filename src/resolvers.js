@@ -52,19 +52,29 @@ const resolvers = {
     Protein: (parent, args, context, info) => {
       let session = context.driver.session(),
         params = { value: args.value, valueType: args.valueType },
-        query = `MATCH (ewas:EntityWithAccessionedSequence) 
-                 WHERE (ewas.valueType = $valueType)
-                 AND (ewas.value = $value OR ewas.value CONTAINS $value)
-                 RETURN ewas
-                `;
+        query = getQuery(valueType);
 
-      /*
-      REFERENCES:
+      function getQuery(valueType) {
+        if (valueType === "DB_ID") {
+          return `MATCH (ewas:EntityWithAccessionedSequence) 
+              WHERE ewas.dbId = $value RETURN ewas`;
 
-      Cypher CONTAINS operator - https://neo4j.com/docs/cypher-manual/current/clauses/where/#match-string-contains
+        } else if (valueType === "UNIPROT_IDENTIFIER") {
+          return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]-> (rgp:ReferenceGeneProduct)
+              WHERE rgp.identifier CONTAINS '$value'
+              RETURN ewas`;
 
-      Cypher AND, OR operators - https://neo4j.com/docs/cypher-manual/current/clauses/where/#boolean-operations
-      */
+        } else if (valueType === "ENTITY_NAME") {
+          return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]-> (rgp:ReferenceGeneProduct) WHERE rgp.name CONTAINS '$value' RETURN ewas`;
+
+        } else if (valueType === "GENE_NAME") {
+          return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]-> (rgp:ReferenceGeneProduct) WHERE rgp.geneName CONTAINS '$value' RETURN ewas`;
+
+        } else {
+          return null;
+        }
+      };
+
 
       return session.run(query, params).then((result) => {
         const record = result.records[0].get("ewas");

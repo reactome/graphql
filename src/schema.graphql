@@ -5,12 +5,6 @@ type Query {
   Protein(value: String!, valueType: ProteinValueType!): [Protein]
 }
 
-enum ProteinValueType {
-	dbId
-	geneName
-  speciesName
-}
-
 # ---------- Interfaces ----------
 # (PhysicalEntity, Event, ReferenceEntity)
 interface PhysicalEntity {
@@ -197,6 +191,13 @@ type Protein implements PhysicalEntity {
   stoichiometryKnown: Boolean
   systematicName: String
   referenceEntity: [ReferenceGeneProduct]
+}
+
+enum ProteinValueType {
+	DB_ID
+	ENTITY_NAME
+	GENE_NAME
+	UNIPROT_IDENTIFIER
 }
 
 # --------- Types by "Event" ---------
