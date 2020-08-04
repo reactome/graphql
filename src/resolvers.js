@@ -51,8 +51,8 @@ const resolvers = {
     },
     Protein: (parent, args, context, info) => {
       let session = context.driver.session(),
-        params = { value: args.value, valueType: args.valueType },
-        query = getQuery(valueType);
+        params = { value: args.valueType === "DB_ID" ? Number(args.value) : args.value, valueType: args.valueType },
+        query = getQuery(args.valueType);
 
       function getQuery(valueType) {
         if (valueType === "DB_ID") {
@@ -60,25 +60,30 @@ const resolvers = {
               WHERE ewas.dbId = $value RETURN ewas`;
 
         } else if (valueType === "UNIPROT_IDENTIFIER") {
-          return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]-> (rgp:ReferenceGeneProduct)
-              WHERE rgp.identifier CONTAINS '$value'
+          return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]->(rgp:ReferenceGeneProduct)
+              WHERE rgp.identifier CONTAINS $value
               RETURN ewas`;
 
         } else if (valueType === "ENTITY_NAME") {
-          return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]-> (rgp:ReferenceGeneProduct) WHERE rgp.name CONTAINS '$value' RETURN ewas`;
+          return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]->(rgp:ReferenceGeneProduct) WHERE ewas.name CONTAINS $value RETURN ewas`;
 
         } else if (valueType === "GENE_NAME") {
-          return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]-> (rgp:ReferenceGeneProduct) WHERE rgp.geneName CONTAINS '$value' RETURN ewas`;
+          return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]->(rgp:ReferenceGeneProduct)
+          UNWIND rgp.geneName as geneNameList
+          WITH geneNameList, ewas
+          WHERE geneNameList CONTAINS $value
+          RETURN ewas`;
 
         } else {
-          return null;
+          throw `Please make sure that value entered for ${valueType} is correct`
         }
       };
 
-
       return session.run(query, params).then((result) => {
-        const record = result.records[0].get("ewas");
-        return record;
+        return result.records.map((rec) => {
+          const record = rec.get("ewas");
+          return record;
+        })
       });
     },
   },
