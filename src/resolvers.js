@@ -105,7 +105,6 @@ const resolvers = {
   Event: eventResolver,
   Pathway: pathwayResolver,
   Reaction: reactionResolver,
-  Catalyst: catalystResolver,
 
   // ReferenceEntity
   ReferenceEntity: referenceEntityResolver,
@@ -114,6 +113,9 @@ const resolvers = {
 
   // ReferenceDatabase
   ReferenceDatabase: referenceDatabaseResolver,
+
+  // Catalyst
+  Catalyst: catalystResolver,
 };
 
 export default resolvers;
