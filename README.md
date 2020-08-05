@@ -254,7 +254,7 @@ Currently, there are three main Interfaces in GraphQL schema and their correspon
         }
       }
     }
-	}
+  }
 }
 ```
 
