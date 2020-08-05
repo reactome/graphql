@@ -179,6 +179,7 @@ The non-entrypoint classes can be accessed by using sub-queries within entrypoin
 }
 ```
 
+
 It is recommended to make extensive use of docs and/or schema panel in the right section of GraphQL playground to learn more about which properties are permitted to query from a particular schema class type or sub-query.
 
 ![Entrypoints](Readme-Assets/schemapanel.png)
@@ -212,7 +213,8 @@ Currently, there are three main Interfaces in GraphQL schema and their correspon
 
 3. **ReferenceEntity** 
    - ReferenceGeneProduct
-   - ReferenceMolecule
+   - ReferenceMolecule 
+
 
 
 **Querying using GraphQL inline-fragments:**

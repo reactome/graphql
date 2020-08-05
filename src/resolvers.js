@@ -65,7 +65,7 @@ const resolvers = {
               RETURN ewas`;
 
         } else if (valueType === "ENTITY_NAME") {
-          return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]->(rgp:ReferenceGeneProduct) WHERE ewas.name CONTAINS $value RETURN ewas`;
+          return `MATCH (ewas:EntityWithAccessionedSequence) WHERE ewas.name CONTAINS $value RETURN ewas`;
 
         } else if (valueType === "GENE_NAME") {
           return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]->(rgp:ReferenceGeneProduct)
