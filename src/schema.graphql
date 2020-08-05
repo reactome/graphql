@@ -234,18 +234,6 @@ type Reaction implements Event {
   catalyst: [Catalyst]
 }
 
-type Catalyst {
-  # type Catalyst is used by type "Reaction"
-  id: ID
-  dbId: Int
-  dbTypes: [String]
-  displayName: String
-  stId: String
-  schemaClass: String
-  physicalEntity: [PhysicalEntity]
-  activeUnit: [PhysicalEntity]
-}
-
 type Pathway implements Event {
   id: ID
   dbId: Int
@@ -338,6 +326,7 @@ type ReferenceMolecule implements ReferenceEntity {
 
 # ----- Just Types -----
 type ReferenceDatabase {
+  # type ReferenceDatabase is used by type "ReferenceGeneProduct"
   id: ID
   dbId: Int
   dbTypes: [String]
@@ -345,4 +334,16 @@ type ReferenceDatabase {
   displayName: String
   name: [String]
   schemaClass: String
+}
+
+type Catalyst {
+  # type Catalyst is used by type "Reaction"
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  displayName: String
+  stId: String
+  schemaClass: String
+  physicalEntity: [PhysicalEntity]
+  activeUnit: [PhysicalEntity]
 }
