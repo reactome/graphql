@@ -14,7 +14,6 @@ import simpleEntityResolver from "./resolvers/PhysicalEntity/simpleEntity";
 import eventResolver from "./resolvers/Event/event";
 import pathwayResolver from "./resolvers/Event/pathway";
 import reactionResolver from "./resolvers/Event/reaction";
-import catalystResolver from "./resolvers/Event/catalyst";
 
 // ReferenceEntity Interface
 import referenceEntityResolver from "./resolvers/ReferenceEntity/referenceEntity";
@@ -22,8 +21,10 @@ import referenceGeneProductResolver from "./resolvers/ReferenceEntity/referenceG
 import referenceMoleculeResolver from "./resolvers/ReferenceEntity/referenceMolecule";
 
 // ReferenceDatabase
-import referenceDatabaseResolver from "./resolvers/ReferenceEntity/referenceDatabase";
+import referenceDatabaseResolver from "./resolvers/ReferenceDatabase/referenceDatabase";
 
+// Catalyst
+import catalystResolver from "./resolvers/Catalyst/catalyst";
 
 const resolvers = {
   // Entry points for GraphQL playground 
