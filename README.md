@@ -188,7 +188,9 @@ It is recommended to make extensive use of docs and/or schema panel in the right
 Reactome database is hierarchical in nature. The top level classes are abstract whereas bottom-most level concrete. Thus, top-level classes are defined as ```Interface``` and others as ```Type```.
 
 **What is an Interface?** 
+
 Like many type systems, GraphQL supports interfaces. An Interface is an abstract type that includes a certain set of fields that a type must include to implement the interface. 
+
 (Learn more about Interface here -> https://graphql.org/learn/schema/#interfaces)
 
 Currently, there are three main Interfaces in GraphQL schema and their corresponding Type sub-classes are as follows:
@@ -235,7 +237,7 @@ Currently, there are three main Interfaces in GraphQL schema and their correspon
 }
 ```
 
-**Case 2:** Accessing ```hasEvent``` relation on ```Pathway``` class
+**Case 2:** Accessing ```Members``` class on ```Set``` class
 ```
 {
   Reaction(dbId: 482621) {
