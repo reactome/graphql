@@ -17,11 +17,11 @@ Execute docker command:
 docker run -p 7687:7687 -p 7474:7474 -e NEO4J_dbms_allow__upgrade=true -v $(pwd)/graph.db:/var/lib/neo4j/data/databases/graph.db neo4j:3.5.17
 ```
 
-Note: 
+**Note:**
 
 A. It is recommended to open the Neo4j database link in incognito mode to avoid cache problems
 
-B. Default username = neo4j and password = neo4j
+B. Default ```username = neo4j``` and ```password = neo4j```
 
 C. Set and remember new password (which will be required in step 3)
 
@@ -58,6 +58,7 @@ npm start
 This will start the GraphQL service (http://0.0.0.0:4001/graphql) where you can issue GraphQL requests by accessing GraphQL Playground in the browser.
 
 ![GraphQL Playground](Readme-Assets/1.png)
+
 
 ## PART - B: Project Details
 
@@ -186,10 +187,8 @@ It is recommended to make extensive use of docs and/or schema panel in the right
 ### Abstract and Concrete classes using Interfaces and Types respectively
 Reactome database is hierarchical in nature. The top level classes are abstract whereas bottom-most level concrete. Thus, top-level classes are defined as ```Interface``` and others as ```Type```.
 
-What is an Interface? 
-
+**What is an Interface?** 
 Like many type systems, GraphQL supports interfaces. An Interface is an abstract type that includes a certain set of fields that a type must include to implement the interface. 
-
 (Learn more about Interface here -> https://graphql.org/learn/schema/#interfaces)
 
 Currently, there are three main Interfaces in GraphQL schema and their corresponding Type sub-classes are as follows:
