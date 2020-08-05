@@ -17,7 +17,8 @@ Execute docker command:
 docker run -p 7687:7687 -p 7474:7474 -e NEO4J_dbms_allow__upgrade=true -v $(pwd)/graph.db:/var/lib/neo4j/data/databases/graph.db neo4j:3.5.17
 ```
 
-Note:
+Note: 
+
 A. It is recommended to open the Neo4j database link in incognito mode to avoid cache problems
 
 B. Default username = neo4j and password = neo4j
@@ -81,7 +82,7 @@ Currently, Reaction and Pathway entrypoints take single argument i.e. dbId and, 
 
 Example queries:
 
-Reaction:
+**Reaction:**
 ```
 {
   Reaction(dbId: 482621) {
@@ -94,7 +95,7 @@ Reaction:
 }
 ```
 
-Pathway:
+**Pathway:**
 ```
 {
   Pathway(dbId: 109581) {
@@ -107,7 +108,7 @@ Pathway:
 }
 ```
 
-Protein:
+**Protein:**
 ```
 {
   Protein(value: "109581", valueType: DB_ID) {
@@ -124,7 +125,7 @@ Protein:
 ### Accessing non-entrypoint classes from within entrypoint classes
 The non-entrypoint classes can be accessed by using sub-queries within entrypoint classes. Lets consider few cases.
 
-Case 1: Accessing ```Reference Entity``` class from ```Protein``` class
+**Case 1:** Accessing ```Reference Entity``` class from ```Protein``` class
 ```
 {
   Protein(value: "109581", valueType: DB_ID) {
@@ -141,7 +142,7 @@ Case 1: Accessing ```Reference Entity``` class from ```Protein``` class
 }
 ```
 
-Case 2: Accessing ```Catalyst``` class from ```Reaction``` class
+**Case 2:** Accessing ```Catalyst``` class from ```Reaction``` class
 ```
 {
   Protein(value: "109581", valueType: DB_ID) {
@@ -158,7 +159,7 @@ Case 2: Accessing ```Catalyst``` class from ```Reaction``` class
 }
 ```
 
-Case 3: Accessing ```Physical Entity``` class from ```Reaction``` class
+**Case 3:** Accessing ```Physical Entity``` class from ```Reaction``` class
 ```
 {
   Reaction(dbId: 482621) {
@@ -187,11 +188,11 @@ Reactome database is hierarchical in nature. The top level classes are abstract 
 
 What is an Interface?
 Like many type systems, GraphQL supports interfaces. An Interface is an abstract type that includes a certain set of fields that a type must include to implement the interface. 
-(Learn more here -> https://graphql.org/learn/schema/#interfaces)
+(Learn more about Interface here -> https://graphql.org/learn/schema/#interfaces)
 
 Currently, there are three main Interfaces in GraphQL schema and their corresponding Type sub-classes are as follows:
 
-1. PhysicalEntity 
+1. **PhysicalEntity** 
    - Complex
    - Drug
    - Set
@@ -202,18 +203,18 @@ Currently, there are three main Interfaces in GraphQL schema and their correspon
    - SimpleEntity
    - Protein
 
-2. Event 
+2. **Event** 
    - Reaction
    - Pathway
 
-3. ReferenceEntity 
+3. **ReferenceEntity** 
    - ReferenceGeneProduct
    - ReferenceMolecule
 
 
 Querying using GraphQL inline-fragments:
 
-Case 1: Accessing ```hasEvent``` relation on ```Pathway``` class
+**Case 1:** Accessing ```hasEvent``` relation on ```Pathway``` class
 ```
 {
   Pathway(dbId: 109581) {
@@ -233,7 +234,7 @@ Case 1: Accessing ```hasEvent``` relation on ```Pathway``` class
 }
 ```
 
-Case 2: Accessing ```hasEvent``` relation on ```Pathway``` class
+**Case 2:** Accessing ```hasEvent``` relation on ```Pathway``` class
 ```
 {
   Reaction(dbId: 482621) {
