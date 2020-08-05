@@ -191,6 +191,8 @@ type Protein implements PhysicalEntity {
   stoichiometryKnown: Boolean
   systematicName: String
   referenceEntity: [ReferenceGeneProduct]
+  set: [Set]
+  complex: [Complex]
 }
 
 enum ProteinValueType {

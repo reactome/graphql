@@ -2,6 +2,10 @@
 
 ## Quick Start
 
+### 0. Install essentials
+A. Install Docker (https://docs.docker.com/get-docker/)
+B. Install NodeJS (https://nodejs.org/en/download/)
+
 ### 1. Get Reactome's Neo4j database running
 
 Execute docker command:
@@ -9,7 +13,11 @@ Execute docker command:
 ```
 docker run -p 7687:7687 -p 7474:7474 -e NEO4J_dbms_allow__upgrade=true -v $(pwd)/graph.db:/var/lib/neo4j/data/databases/graph.db neo4j:3.5.17
 ```
-(It is recommended to open the Neo4j database link in incognito mode to avoid cache problems)
+
+Note:
+A. It is recommended to open the Neo4j database link in incognito mode to avoid cache problems
+B. Default username = neo4j and password = neo4j
+C. Set and remember new password (which will be required in step 3)
 
 ### 2. Clone/Download project files and install dependencies
 

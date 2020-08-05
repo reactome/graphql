@@ -31,7 +31,7 @@ const polymerResolver = polymerProperties.reduce((object, propertyName) => {
 const repeatedUnitResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
-        query = `(p:Polymer)-[:repeatedUnit]->(pe:PhysicalEntity) WHERE p.dbId = $dbId RETURN pe`;
+        query = `MATCH (p:Polymer)-[:repeatedUnit]->(pe:PhysicalEntity) WHERE p.dbId = $dbId RETURN pe`;
 
     return session.run(query, params).then((result) => {
         return result.records.map((rec) => {

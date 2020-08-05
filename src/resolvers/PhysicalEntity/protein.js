@@ -58,10 +58,40 @@ const referenceEntityResolver = (obj, args, context, info) => {
     });
 };
 
+const setResolver = (obj, args, context, info) => {
+    let session = context.driver.session(),
+        params = { dbId: obj.properties.dbId.toNumber() },
+        query = `MATCH (ewas:EntityWithAccessionedSequence)<-[:hasMember|hasCandidate]-(s:EntitySet)
+        WHERE ewas.dbId = $dbId RETURN s`;
+
+    return session.run(query, params).then((result) => {
+        return result.records.map((rec) => {
+            const record = rec.get("s");
+            return record;
+        });
+    });
+};
+
+const complexResolver = (obj, args, context, info) => {
+    let session = context.driver.session(),
+        params = { dbId: obj.properties.dbId.toNumber() },
+        query = `MATCH (ewas:EntityWithAccessionedSequence)<-[:hasComponent]-(c:Complex)
+        WHERE ewas.dbId = $dbId RETURN c`;
+
+    return session.run(query, params).then((result) => {
+        return result.records.map((rec) => {
+            const record = rec.get("c");
+            return record;
+        });
+    });
+};
+
 export default {
     ...proteinResolver,
     dbId,
     id,
     dbTypes,
     "referenceEntity": referenceEntityResolver,
+    "set": setResolver,
+    "complex": complexResolver,
 };
