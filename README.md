@@ -81,14 +81,18 @@ There are three entrypoints in within GraphQL playground to query the data from 
 
 ![Entrypoints](Readme-Assets/entrypoints.png)
 
-Currently, Reaction and Pathway entrypoints take single argument i.e. dbId and, Protein takes two arguments i.e. value and ValueType to query data.
+
+### Querying Entrypoints Using Arguments
+Reaction, Pathway and, Protein classes can be queries using two arguments and they are: 
+1. value
+2. valueType
 
 Example GraphQL Queries:
 
 **Reaction:**
 ```
 {
-  Reaction(dbId: 482621) {
+  Reaction(value: "482621", valueType: DB_ID) {
     schemaClass
     name
     dbTypes
@@ -101,7 +105,7 @@ Example GraphQL Queries:
 **Pathway:**
 ```
 {
-  Pathway(dbId: 109581) {
+  Pathway(value: "109581", valueType: DB_ID) {
     dbId
     isInDisease
     displayName
@@ -165,7 +169,7 @@ The non-entrypoint classes can be accessed by using sub-queries within entrypoin
 **Case 3:** Accessing ```Physical Entity``` class from ```Reaction``` class
 ```
 {
-  Reaction(dbId: 482621) {
+  Reaction(value: "482621", valueType: DB_ID) {
     dbTypes
     schemaClass
     name
@@ -224,7 +228,7 @@ Currently, there are three main Interfaces in GraphQL schema and their correspon
 **Case 1:** Accessing ```hasEvent``` relation on ```Pathway``` class
 ```
 {
-  Pathway(dbId: 109581) {
+  Pathway(value: "109581", valueType: DB_ID) {
     hasEvent {
       schemaClass
       speciesName
@@ -244,7 +248,7 @@ Currently, there are three main Interfaces in GraphQL schema and their correspon
 **Case 2:** Accessing ```Members``` class on ```Set``` class
 ```
 {
-  Reaction(dbId: 482621) {
+  Reaction(value: "482621", valueType: DB_ID) {
     dbTypes
     schemaClass
     stId
