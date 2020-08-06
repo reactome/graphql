@@ -1,7 +1,7 @@
 # --------- Query - (Entry points) ---------
 type Query {
   Reaction(dbId: Int!): Reaction
-  Pathway(dbId: Int!): Pathway
+  Pathway(value: String!, valueType: EventValueType!): [Pathway]
   Protein(value: String!, valueType: ProteinValueType!): [Protein]
 }
 
@@ -258,6 +258,12 @@ type Pathway implements Event {
   isChimeric: Boolean
   systematicName: String
   hasEvent: [Event]
+}
+
+enum EventValueType {
+	DB_ID
+  STABLE_ID
+	NAME
 }
 
 # ----- Types By "ReferenceEntity" -----
