@@ -7,7 +7,9 @@ A. Install Docker (https://docs.docker.com/get-docker/)
 
 B. Install NodeJS (https://nodejs.org/en/download/)
 
-### 1. Get Reactome's Neo4j database running
+### 1. Get Reactome's Neo4j database running 
+
+Download Reactome's database: https://reactome.org/download/current/reactome.graphdb.tgz
 
 Execute docker command:
 
@@ -201,7 +203,7 @@ Like many type systems, GraphQL supports interfaces. An Interface is an abstract
 
 (Learn more about Interface here -> https://graphql.org/learn/schema/#interfaces)
 
-Currently, there are three main Interfaces in GraphQL schema and their corresponding Type sub-classes are as follows:
+Currently, there are three main Interfaces in Reactome GraphQL schema and their corresponding Type sub-classes are as follows:
 
 1. **PhysicalEntity** 
    - Complex
