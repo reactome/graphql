@@ -9,9 +9,9 @@ B. Install NodeJS (https://nodejs.org/en/download/)
 
 ### 1. Get Reactome's Neo4j database running 
 
-Download Reactome's database: https://reactome.org/download/current/reactome.graphdb.tgz
+A. Download Reactome's database: https://reactome.org/download/current/reactome.graphdb.tgz
 
-Execute docker command:
+B. Execute docker command:
 
 ```
 docker run -p 7687:7687 -p 7474:7474 -e NEO4J_dbms_allow__upgrade=true -v $(pwd)/graph.db:/var/lib/neo4j/data/databases/graph.db neo4j:3.5.17
