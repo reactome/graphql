@@ -32,12 +32,33 @@ const resolvers = {
   Query: {
     Reaction: (parent, args, context, info) => {
       let session = context.driver.session(),
-        params = { dbId: args.dbId },
-        query = `MATCH (rle:ReactionLikeEvent) WHERE rle.dbId = $dbId RETURN rle`;
+        params = { value: args.valueType === "DB_ID" ? Number(args.value) : args.value, valueType: args.valueType },
+        query = getQuery(args.valueType);
+
+      function getQuery(valueType) {
+        if (valueType === "DB_ID") {
+          return `MATCH (rle:ReactionLikeEvent) WHERE rle.dbId = $value RETURN rle`;
+
+        } else if (valueType === "STABLE_ID") {
+          return `MATCH (rle:ReactionLikeEvent) WHERE rle.stId CONTAINS $value RETURN rle`;
+
+        } else if (valueType === "NAME") {
+          return `MATCH (rle:ReactionLikeEvent)
+            UNWIND rle.name as rleNameList
+            WITH rleNameList, rle
+            WHERE rleNameList CONTAINS $value
+            RETURN rle`;
+
+        } else {
+          throw `Please make sure that value entered for ${valueType} is correct`
+        }
+      };
 
       return session.run(query, params).then((result) => {
-        const record = result.records[0].get("rle");
-        return record;
+        return result.records.map((rec) => {
+          const record = rec.get("rle");
+          return record;
+        })
       });
     },
     Pathway: (parent, args, context, info) => {

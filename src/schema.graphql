@@ -1,6 +1,6 @@
 # --------- Query - (Entry points) ---------
 type Query {
-  Reaction(dbId: Int!): Reaction
+  Reaction(value: String!, valueType: EventValueType!): [Reaction]
   Pathway(value: String!, valueType: EventValueType!): [Pathway]
   Protein(value: String!, valueType: ProteinValueType!): [Protein]
 }
