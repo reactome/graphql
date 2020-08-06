@@ -87,7 +87,8 @@ Reaction, Pathway and, Protein classes can be queries using two arguments and th
 1. value
 2. valueType
 
-**Note:** For the best querying experience make extensive use of keypad shortcuts **option + space** OR **command + space** to get auto-suggestions in GraphQL playground. 
+**Note:** For the best querying experience make extensive use of keypad shortcuts **option + space**/**command + space** to get auto-suggestions in GraphQL playground. 
+
 
 Example GraphQL Queries:
 
