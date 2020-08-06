@@ -269,12 +269,12 @@ Currently, there are three main Interfaces in Reactome GraphQL schema and their 
 
 ## PART - C: Sample GraphQL Query Output Examples
 
-![example1](Readme-Assets/example1.png)
+![example1](Readme-Assets/example1.png) 
 
-![example2](Readme-Assets/example2.png)
+![example2](Readme-Assets/example2.png) 
 
-![example3](Readme-Assets/example3.png)
+![example3](Readme-Assets/example3.png) 
 
-![example4](Readme-Assets/example4.png)
+![example4](Readme-Assets/example4.png) 
 
-![example5](Readme-Assets/example5.png)
+![example5](Readme-Assets/example5.png) 
