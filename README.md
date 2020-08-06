@@ -64,16 +64,16 @@ This will start the GraphQL service (http://0.0.0.0:4001/graphql) where you can 
 
 ## PART - B: Project Details
 
-### Description:
+### 0. Description:
 Reactome currently uses REST-based API for its backend implementation that allows end-users to obtain specific data from a set of predefined static end-points. To provide better flexibility and allow users to query whatever data they need, Reactome's backend architecture needs to be implemented by GraphQL endpoint that will fetch data from Neo4j database.
 
-### Tools Used:
+### 1. Tools Used:
 1. GraphQL (https://graphql.org/)
 2. JavaScript (https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 3. NodeJS (https://nodejs.org/en/)
 4. Neo4j Database (https://neo4j.com/)
 
-### GraphQL Entrypoints:
+### 2. GraphQL Entrypoints:
 There are three entrypoints in within GraphQL playground to query the data from Neo4j database and they are:
 1. Reaction 
 2. Pathway 
@@ -82,7 +82,7 @@ There are three entrypoints in within GraphQL playground to query the data from 
 ![Entrypoints](Readme-Assets/entrypoints.png)
 
 
-### Querying Entrypoints Using Arguments
+### 3. Querying Entrypoints Using Arguments
 Reaction, Pathway and, Protein classes can be queries using two arguments and they are: 
 1. value
 2. valueType
@@ -132,7 +132,7 @@ Example GraphQL Queries:
 }
 ```
 
-### Accessing non-entrypoint classes from within entrypoint classes
+### 4. Accessing non-entrypoint classes from within entrypoint classes
 The non-entrypoint classes can be accessed by using sub-queries within entrypoint classes. Lets consider few cases.
 
 **Case 1:** Accessing ```Reference Entity``` class from ```Protein``` class
@@ -194,7 +194,7 @@ It is recommended to make extensive use of docs and/or schema panel in the right
 ![Entrypoints](Readme-Assets/schemapanel.png)
 
 
-### Abstract and Concrete classes using Interfaces and Types respectively
+### 5. Abstract and Concrete classes using Interfaces and Types respectively
 Reactome database is hierarchical in nature. The top level classes are abstract whereas bottom-most level concrete. Thus, top-level classes are defined as ```Interface``` and others as ```Type```.
 
 **What is an Interface?** 
