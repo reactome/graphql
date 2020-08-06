@@ -35,6 +35,8 @@ npm install
 
 Set your Neo4j connection string and credentials in `.env` file. For example:
 
+**Note:** It is essential to change password value for the field **NEO4J_PASSWORD** to the new password value that was set in **1.C** (above).
+
 ```
 NEO4J_URI=bolt://localhost:7687
 NEO4J_USER=neo4j
@@ -43,13 +45,13 @@ NEO4J_PASSWORD=reactome
 
 ### 4. Start the GraphQL service
 
-a. Development mode:-
+a. Development mode:
 
 ```
 npm run start:dev
 ```
 
-b. Production mode:-
+b. Production mode:
 
 ```
 npm start
@@ -257,7 +259,3 @@ Currently, there are three main Interfaces in GraphQL schema and their correspon
   }
 }
 ```
-
-
-
-
