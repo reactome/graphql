@@ -45,7 +45,9 @@ const pathwayResolver = pathwayProperties.reduce((object, propertyName) => {
 const hasEventResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
-        query = `MATCH (p:Pathway)-[:hasEvent]->(e:Event) WHERE p.dbId = $dbId RETURN e`;
+        query = `MATCH (p:Pathway)-[:hasEvent]->(e:Event) 
+        WHERE p.dbId = $dbId 
+        RETURN e`;
 
     return session.run(query, params).then((result) => {
         return result.records.map((rec) => {

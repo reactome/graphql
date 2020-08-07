@@ -51,7 +51,9 @@ const referenceGeneProductResolver = referenceGeneProductProperties.reduce((obje
 const referenceDatabaseResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
-        query = `MATCH (rgp:ReferenceGeneProduct)-[:referenceDatabase]->(rd:ReferenceDatabase) WHERE rgp.dbId = $dbId RETURN rd`;
+        query = `MATCH (rgp:ReferenceGeneProduct)-[:referenceDatabase]->(rd:ReferenceDatabase) 
+        WHERE rgp.dbId = $dbId 
+        RETURN rd`;
 
     return session.run(query, params).then((result) => {
         return result.records.map((rec) => {

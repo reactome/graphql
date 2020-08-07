@@ -45,7 +45,9 @@ const reactionResolver = reactionProperties.reduce((object, propertyName) => {
 const inputResolver = (obj, args, context, info) => {
   let session = context.driver.session(),
     params = { dbId: obj.properties.dbId.toNumber() },
-    query = `MATCH (rle:ReactionLikeEvent)-[:input]->(pe:PhysicalEntity) WHERE rle.dbId = $dbId RETURN pe`;
+    query = `MATCH (rle:ReactionLikeEvent)-[:input]->(pe:PhysicalEntity) 
+    WHERE rle.dbId = $dbId 
+    RETURN pe`;
 
   return session.run(query, params).then((result) => {
     return result.records.map((rec) => {

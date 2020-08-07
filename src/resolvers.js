@@ -37,10 +37,14 @@ const resolvers = {
 
       function getQuery(valueType) {
         if (valueType === "DB_ID") {
-          return `MATCH (rle:ReactionLikeEvent) WHERE rle.dbId = $value RETURN rle`;
+          return `MATCH (rle:ReactionLikeEvent) 
+          WHERE rle.dbId = $value 
+          RETURN rle`;
 
         } else if (valueType === "STABLE_ID") {
-          return `MATCH (rle:ReactionLikeEvent) WHERE rle.stId CONTAINS $value RETURN rle`;
+          return `MATCH (rle:ReactionLikeEvent) 
+          WHERE rle.stId CONTAINS $value 
+          RETURN rle`;
 
         } else if (valueType === "NAME") {
           return `MATCH (rle:ReactionLikeEvent)
@@ -68,10 +72,14 @@ const resolvers = {
 
       function getQuery(valueType) {
         if (valueType === "DB_ID") {
-          return `MATCH (p:Pathway) WHERE p.dbId = $value RETURN p`;
+          return `MATCH (p:Pathway) 
+          WHERE p.dbId = $value 
+          RETURN p`;
 
         } else if (valueType === "STABLE_ID") {
-          return `MATCH (p:Pathway) WHERE p.stId CONTAINS $value RETURN p`;
+          return `MATCH (p:Pathway) 
+          WHERE p.stId CONTAINS $value 
+          RETURN p`;
 
         } else if (valueType === "NAME") {
           return `MATCH (p:Pathway)
@@ -99,13 +107,21 @@ const resolvers = {
 
       function getQuery(valueType) {
         if (valueType === "DB_ID") {
-          return `MATCH (ewas:EntityWithAccessionedSequence) WHERE ewas.dbId = $value RETURN ewas`;
+          return `MATCH (ewas:EntityWithAccessionedSequence) 
+          WHERE ewas.dbId = $value 
+          RETURN ewas`;
 
         } else if (valueType === "UNIPROT_IDENTIFIER") {
-          return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]->(rgp:ReferenceGeneProduct) WHERE rgp.identifier CONTAINS $value RETURN ewas`;
+          return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]->(rgp:ReferenceGeneProduct) 
+          WHERE rgp.identifier CONTAINS $value 
+          RETURN ewas`;
 
         } else if (valueType === "ENTITY_NAME") {
-          return `MATCH (ewas:EntityWithAccessionedSequence) UNWIND ewas.name as ewasNameList WITH ewasNameList, ewas WHERE ewasNameList CONTAINS $value RETURN ewas`;
+          return `MATCH (ewas:EntityWithAccessionedSequence) 
+          UNWIND ewas.name as ewasNameList 
+          WITH ewasNameList, ewas 
+          WHERE ewasNameList CONTAINS $value 
+          RETURN ewas`;
 
         } else if (valueType === "GENE_NAME") {
           return `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]->(rgp:ReferenceGeneProduct)

@@ -29,7 +29,9 @@ const catalystResolver = catalystProperties.reduce((object, propertyName) => {
 const physicalEntityResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
-        query = `MATCH (ca:CatalystActivity)-[:physicalEntity]->(pe:PhysicalEntity) WHERE ca.dbId = $dbId RETURN pe`;
+        query = `MATCH (ca:CatalystActivity)-[:physicalEntity]->(pe:PhysicalEntity) 
+        WHERE ca.dbId = $dbId 
+        RETURN pe`;
 
     return session.run(query, params).then((result) => {
         return result.records.map((rec) => {
@@ -42,7 +44,9 @@ const physicalEntityResolver = (obj, args, context, info) => {
 const activeUnitResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
-        query = `MATCH (ca:CatalystActivity)-[:activeUnit]->(pe:PhysicalEntity) WHERE ca.dbId = $dbId RETURN pe`;
+        query = `MATCH (ca:CatalystActivity)-[:activeUnit]->(pe:PhysicalEntity) 
+        WHERE ca.dbId = $dbId 
+        RETURN pe`;
 
     return session.run(query, params).then((result) => {
         return result.records.map((rec) => {

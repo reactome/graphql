@@ -48,7 +48,9 @@ const proteinResolver = proteinProperties.reduce((object, propertyName) => {
 const referenceEntityResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
-        query = `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]->(rgp:ReferenceGeneProduct) WHERE ewas.dbId = $dbId RETURN rgp`;
+        query = `MATCH (ewas:EntityWithAccessionedSequence)-[:referenceEntity]->(rgp:ReferenceGeneProduct) 
+        WHERE ewas.dbId = $dbId 
+        RETURN rgp`;
 
     return session.run(query, params).then((result) => {
         return result.records.map((rec) => {
@@ -62,7 +64,8 @@ const setResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
         query = `MATCH (ewas:EntityWithAccessionedSequence)<-[:hasMember|hasCandidate]-(s:EntitySet)
-        WHERE ewas.dbId = $dbId RETURN s`;
+        WHERE ewas.dbId = $dbId 
+        RETURN s`;
 
     return session.run(query, params).then((result) => {
         return result.records.map((rec) => {
@@ -76,7 +79,8 @@ const complexResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
         query = `MATCH (ewas:EntityWithAccessionedSequence)<-[:hasComponent]-(c:Complex)
-        WHERE ewas.dbId = $dbId RETURN c`;
+        WHERE ewas.dbId = $dbId 
+        RETURN c`;
 
     return session.run(query, params).then((result) => {
         return result.records.map((rec) => {

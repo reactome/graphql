@@ -31,7 +31,9 @@ const complexResolver = complexProperties.reduce((object, propertyName) => {
 const hasComponentResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
-        query = `MATCH (c:Complex)-[:hasComponent]->(pe:PhysicalEntity) WHERE c.dbId = $dbId RETURN pe`;
+        query = `MATCH (c:Complex)-[:hasComponent]->(pe:PhysicalEntity) 
+        WHERE c.dbId = $dbId 
+        RETURN pe`;
 
     return session.run(query, params).then((result) => {
         return result.records.map((rec) => {

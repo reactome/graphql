@@ -31,7 +31,9 @@ const setResolver = setProperties.reduce((object, propertyName) => {
 const hasCandidateResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
-        query = `MATCH (c:CandidateSet)-[:hasCandidate]->(pe:PhysicalEntity) WHERE c.dbId = $dbId RETURN pe`;
+        query = `MATCH (c:CandidateSet)-[:hasCandidate]->(pe:PhysicalEntity) 
+        WHERE c.dbId = $dbId 
+        RETURN pe`;
 
     return session.run(query, params).then((result) => {
         return result.records.map((rec) => {
@@ -44,7 +46,9 @@ const hasCandidateResolver = (obj, args, context, info) => {
 const hasMemberResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
-        query = `MATCH (es:EntitySet)-[:hasMember]->(pe:PhysicalEntity) WHERE es.dbId = $dbId RETURN pe`;
+        query = `MATCH (es:EntitySet)-[:hasMember]->(pe:PhysicalEntity) 
+        WHERE es.dbId = $dbId 
+        RETURN pe`;
 
     return session.run(query, params).then((result) => {
         return result.records.map((rec) => {
