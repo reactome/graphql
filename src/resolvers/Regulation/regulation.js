@@ -44,7 +44,7 @@ const regulatorResolver = (obj, args, context, info) => {
 const summationResolver = (obj, args, context, info) => {
     let session = context.driver.session(),
         params = { dbId: obj.properties.dbId.toNumber() },
-        query = `MATCH (r:Regulation)-[:regulator]->(s:Summation) 
+        query = `MATCH (r:Regulation)-[:summation]->(s:Summation) 
         WHERE r.dbId = $dbId 
         RETURN s`;
 
