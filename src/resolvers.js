@@ -28,6 +28,7 @@ import catalystResolver from "./resolvers/Catalyst/catalyst";
 
 // Regulation
 import regulationResolver from "./resolvers/Regulation/regulation";
+import summationResolver from "./resolvers/Regulation/summation";
 
 const resolvers = {
   // Entry points for GraphQL playground 
@@ -177,6 +178,7 @@ const resolvers = {
 
   // Regulation
   Regulation: regulationResolver,
+  Summation: summationResolver,
 };
 
 export default resolvers;

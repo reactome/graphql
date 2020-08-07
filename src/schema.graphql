@@ -371,11 +371,11 @@ type Summation {
   # type Summation is used by type "Regulation"
   id: ID
   dbId: Int
+  dbTypes: [String]
   displayName: String
   stId: String
   schemaClass: String
   text: String
-  dbTypes: [String]
 }
 
 
