@@ -26,6 +26,9 @@ import referenceDatabaseResolver from "./resolvers/ReferenceDatabase/referenceDa
 // Catalyst
 import catalystResolver from "./resolvers/Catalyst/catalyst";
 
+// Regulation
+import regulationResolver from "./resolvers/Regulation/regulation";
+
 const resolvers = {
   // Entry points for GraphQL playground 
   // (Reaction, Pathway, Protein)
@@ -171,6 +174,9 @@ const resolvers = {
 
   // Catalyst
   Catalyst: catalystResolver,
+
+  // Regulation
+  Regulation: regulationResolver,
 };
 
 export default resolvers;

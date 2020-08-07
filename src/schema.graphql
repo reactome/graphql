@@ -232,6 +232,7 @@ type Reaction implements Event {
   input: [PhysicalEntity]
   output: [PhysicalEntity]
   catalyst: [Catalyst]
+  regulation: [Regulation]
 }
 
 type Pathway implements Event {
@@ -353,3 +354,28 @@ type Catalyst {
   physicalEntity: [PhysicalEntity]
   activeUnit: [PhysicalEntity]
 }
+
+type Regulation {
+  # type Regulation is used by type "Reaction"
+  id: ID
+  dbId: Int
+  displayName: String
+  stId: String
+  schemaClass: String
+  dbTypes: [String]
+  regulator: [PhysicalEntity]
+  summation: [Summation]
+}
+
+type Summation {
+  # type Summation is used by type "Regulation"
+  id: ID
+  dbId: Int
+  displayName: String
+  stId: String
+  schemaClass: String
+  text: String
+  dbTypes: [String]
+}
+
+

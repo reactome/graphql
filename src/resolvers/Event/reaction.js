@@ -109,6 +109,19 @@ const catalystResolver = (obj, args, context, info) => {
   });
 };
 
+const regulationResolver = (obj, args, context, info) => {
+  let session = context.driver.session(),
+    params = { dbId: obj.properties.dbId.toNumber() },
+    query = `MATCH (rle:ReactionLikeEvent)-[:regulatedBy]->(r:Regulation) WHERE rle.dbId = $dbId RETURN r`;
+
+  return session.run(query, params).then((result) => {
+    return result.records.map((rec) => {
+      const record = rec.get("r");
+      return record;
+    });
+  });
+};
+
 export default {
   ...reactionResolver,
   dbId,
@@ -118,5 +131,6 @@ export default {
   "output": outputResolver,
   "templateEvent": templateEventResolver,
   "reverseReaction": reverseReactionResolver,
-  "catalyst": catalystResolver
+  "catalyst": catalystResolver,
+  "regulation": regulationResolver,
 };
