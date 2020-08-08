@@ -63,10 +63,17 @@ const resolvers = {
       };
 
       return session.run(query, params).then((result) => {
-        return result.records.map((rec) => {
-          const record = rec.get("rle");
-          return record;
-        })
+        if (result.records.length === 0) {
+          console.log("Please make sure that value entered is correct!");
+          /*
+            Some function to display custom message in playground
+          */
+        } else {
+          return result.records.map((rec) => {
+            const record = rec.get("rle");
+            return record;
+          })
+        }
       });
     },
     Pathway: (parent, args, context, info) => {
@@ -98,10 +105,17 @@ const resolvers = {
       };
 
       return session.run(query, params).then((result) => {
-        return result.records.map((rec) => {
-          const record = rec.get("p");
-          return record;
-        })
+        if (result.records.length === 0) {
+          console.log("Please make sure that value entered is correct!");
+          /*
+            Some function to display custom message in playground
+          */
+        } else {
+          return result.records.map((rec) => {
+            const record = rec.get("p");
+            return record;
+          })
+        }
       });
     },
     Protein: (parent, args, context, info) => {
@@ -140,10 +154,17 @@ const resolvers = {
       };
 
       return session.run(query, params).then((result) => {
-        return result.records.map((rec) => {
-          const record = rec.get("ewas");
-          return record;
-        })
+        if (result.records.length === 0) {
+          console.log("Please make sure that value entered is correct!");
+          /*
+            Some function to display custom message in playground
+          */
+        } else {
+          return result.records.map((rec) => {
+            const record = rec.get("ewas");
+            return record;
+          })
+        }
       });
     },
   },
