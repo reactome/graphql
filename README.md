@@ -35,7 +35,7 @@ npm install
 
 Set your Neo4j connection string and credentials in `.env` file. For example:
 
-**Note:** It is essential to change password value for the field **NEO4J_PASSWORD** to the new password value that was set in **1.C** (above).
+**Note:** It is essential to change password value for the field **NEO4J_PASSWORD** to the new password value that was set in **1.Note.C** (above).
 
 ```
 NEO4J_URI=bolt://localhost:7687
@@ -534,3 +534,33 @@ An inline-fragment is used when an interface type is returned by a query which c
   }
 }
 ```
+
+## PART - D: Future Work
+
+**Task 1: Zero Setup GraphQL Playground**
+
+Currently, to access GraphQL playground the user has to do a whole bunch of local setup i.e. to download Docker and NodeJS softwares, install NPM packages, download Reactome database, etc. 
+
+So, the future work of this project would involve is to host these services directly to Heroku, Netlify or any other service providers and make available a direct link of Reactome's GraphQL Playground. 
+
+For example, when a user visits **reactome.org/graphql** this should directly open Reactome's GraphQL Playground interface. 
+
+**Task 2: FrontEnd Interface To Access Reactome Database**
+
+Instead of accessing Reactome data programmatically from GraphQL playground, it is always better to access data using a user-friendly website interface. This will enhance and provide better UX and CX. 
+
+So, the future work of this project should be to create a website using ReactJS to query data from Reactome's Neo4j database. 
+
+The reason to use ReactJS is because it blends better with GraphQL. Both ReactJS and GraphQL are technologies created by Facebook to seamlessly work with each other.
+
+Sample user-experience of this concept would be: 
+
+a. User selects a Reactome class from list of all available classes from dropdown menu. 
+
+b. Then, valueType is selected from available valueTypes using radio button. 
+
+c. Then, value for corresponding valueType is entered into the search box.
+
+d. Press 'Search' button on screen or press 'Enter' on keyboard and this will fetch required results. 
+
+(This task can be one of the project ideas for the GSoC 2021:bulb:)
