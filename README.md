@@ -555,12 +555,12 @@ The reason to use ReactJS is because it blends better with GraphQL. Both ReactJS
 
 Sample user-experience of this concept would be: 
 
-a. User selects a Reactome class from list of all available classes from dropdown menu. 
+a. User selects a Reactome class from list of all available classes from a dropdown menu. 
 
-b. Then, valueType is selected from available valueTypes using radio button. 
+b. Then, valueType is selected from available valueTypes using the radio button. 
 
 c. Then, value for corresponding valueType is entered into the search box.
 
-d. Press 'Search' button on screen or press 'Enter' on keyboard and this will fetch required results. 
+d. Press 'Search' button on screen or press 'Enter' on keyboard and this will fetch required results from the backend. 
 
 (This task can be one of the project ideas for the GSoC 2021:bulb:)
