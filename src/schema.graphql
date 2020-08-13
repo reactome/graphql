@@ -1,0 +1,381 @@
+# --------- Query - (Entry points) ---------
+type Query {
+  Reaction(value: String!, valueType: EventValueType!): [Reaction]
+  Pathway(value: String!, valueType: EventValueType!): [Pathway]
+  Protein(value: String!, valueType: ProteinValueType!): [Protein]
+}
+
+# ---------- Interfaces ----------
+# (PhysicalEntity, Event, ReferenceEntity)
+interface PhysicalEntity {
+  id: ID
+  dbId: Int
+  displayName: String
+  name: [String]
+  schemaClass: String
+  speciesName: String
+  stId: String
+  dbTypes: [String]
+}
+
+interface Event {
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  schemaClass: String
+  oldStId: String
+  isInDisease: Boolean
+  releaseDate: String
+  displayName: String
+  stId: String
+  speciesName: String
+  diagramHeight: Int
+  hasEHLD: Boolean
+  stIdVersion: String
+  releaseStatus: String
+  name: [String]
+  definition: String
+  hasDiagram: Boolean
+  isInferred: Boolean
+  doi: String
+  diagramWidth: Int
+  isChimeric: Boolean
+  systematicName: String
+}
+
+interface ReferenceEntity {
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  abbreviation: String
+  approvalSource: [String]
+  approved: Boolean
+  chain: [String]
+  checksum: String
+  comment: [String]
+  databaseName: String
+  description: [String]
+  displayName: String
+  formula: String
+  geneName: [String]
+  inn: String
+  identifier: String
+  isSequenceChanged: Boolean
+  keyword: [String]
+  name: [String]
+  otherIdentifier: [String]
+  schemaClass: String
+  secondaryIdentifier: [String]
+  sequenceLength: Int
+  trivial: Boolean
+  type: String
+  url: String
+  variantIdentifier: String
+}
+
+# --------- Types by "PhysicalEntity" ---------
+# (Complex, Drug, Set, GenomeEncodedEntity, EntityWithAccessionedSequence, OtherEntity, Polymer, SimpleEntity, Protein)
+type Complex implements PhysicalEntity {
+  id: ID
+  dbId: Int
+  displayName: String
+  name: [String]
+  schemaClass: String
+  speciesName: String
+  stId: String
+  dbTypes: [String]
+  components: [PhysicalEntity]
+}
+
+type Drug implements PhysicalEntity {
+  id: ID
+  dbId: Int
+  displayName: String
+  name: [String]
+  schemaClass: String
+  speciesName: String
+  stId: String
+  dbTypes: [String]
+}
+
+type Set implements PhysicalEntity {
+  id: ID
+  dbId: Int
+  displayName: String
+  name: [String]
+  schemaClass: String
+  speciesName: String
+  stId: String
+  dbTypes: [String]
+  members: [PhysicalEntity]
+  candidates: [PhysicalEntity]
+}
+
+type GenomeEncodedEntity implements PhysicalEntity {
+  id: ID
+  dbId: Int
+  displayName: String
+  name: [String]
+  schemaClass: String
+  speciesName: String
+  stId: String
+  dbTypes: [String]
+}
+
+type EntityWithAccessionedSequence implements PhysicalEntity {
+  id: ID
+  dbId: Int
+  displayName: String
+  name: [String]
+  schemaClass: String
+  speciesName: String
+  stId: String
+  dbTypes: [String]
+}
+
+type OtherEntity implements PhysicalEntity {
+  id: ID
+  dbId: Int
+  displayName: String
+  name: [String]
+  schemaClass: String
+  speciesName: String
+  stId: String
+  dbTypes: [String]
+}
+
+type Polymer implements PhysicalEntity {
+  id: ID
+  dbId: Int
+  displayName: String
+  name: [String]
+  schemaClass: String
+  speciesName: String
+  stId: String
+  dbTypes: [String]
+  repeatedUnit: [PhysicalEntity]
+}
+
+type SimpleEntity implements PhysicalEntity {
+  id: ID
+  dbId: Int
+  displayName: String
+  name: [String]
+  schemaClass: String
+  speciesName: String
+  stId: String
+  dbTypes: [String]
+}
+
+type Protein implements PhysicalEntity {
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  definition: String
+  displayName: String
+  endCoordinate: Int
+  geneName: String
+  isChimeric: Boolean
+  isInDisease: Boolean
+  isOrdered: Boolean
+  maxUnitCount: Int
+  minUnitCount: Int
+  name: [String]
+  oldStId: String
+  referenceType: String
+  schemaClass: String
+  speciesName: String
+  startCoordinate: Int
+  stId: String
+  stIdVersion: String
+  stoichiometryKnown: Boolean
+  systematicName: String
+  referenceEntity: [ReferenceGeneProduct]
+  set: [Set]
+  complex: [Complex]
+}
+
+enum ProteinValueType {
+	DB_ID
+	ENTITY_NAME
+	GENE_NAME
+	UNIPROT_IDENTIFIER
+}
+
+# --------- Types by "Event" ---------
+# (Reaction, Pathway)
+type Reaction implements Event {
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  schemaClass: String
+  oldStId: String
+  isInDisease: Boolean
+  releaseDate: String
+  displayName: String
+  stId: String
+  speciesName: String
+  diagramHeight: Int
+  hasEHLD: Boolean
+  stIdVersion: String
+  releaseStatus: String
+  name: [String]
+  definition: String
+  hasDiagram: Boolean
+  isInferred: Boolean
+  doi: String
+  diagramWidth: Int
+  isChimeric: Boolean
+  systematicName: String
+  templateEvent: [Event]
+  reverseReaction: [Reaction]
+  input: [PhysicalEntity]
+  output: [PhysicalEntity]
+  catalyst: [Catalyst]
+  regulation: [Regulation]
+}
+
+type Pathway implements Event {
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  schemaClass: String
+  oldStId: String
+  isInDisease: Boolean
+  releaseDate: String
+  displayName: String
+  stId: String
+  speciesName: String
+  diagramHeight: Int
+  hasEHLD: Boolean
+  stIdVersion: String
+  releaseStatus: String
+  name: [String]
+  definition: String
+  hasDiagram: Boolean
+  isInferred: Boolean
+  doi: String
+  diagramWidth: Int
+  isChimeric: Boolean
+  systematicName: String
+  hasEvent: [Event]
+}
+
+enum EventValueType {
+	DB_ID
+  STABLE_ID
+	NAME
+}
+
+# ----- Types By "ReferenceEntity" -----
+# (ReferenceGeneProduct, ReferenceMolecule)
+type ReferenceGeneProduct implements ReferenceEntity {
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  abbreviation: String
+  accessUrl: String
+  approvalSource: [String]
+  approved: Boolean
+  chain: [String]
+  checksum: String
+  comment: [String]
+  databaseName: String
+  description: [String]
+  displayName: String
+  formula: String
+  geneName: [String]
+  inn: String
+  identifier: String
+  isSequenceChanged: Boolean
+  keyword: [String]
+  name: [String]
+  otherIdentifier: [String]
+  schemaClass: String
+  secondaryIdentifier: [String]
+  sequenceLength: Int
+  trivial: Boolean
+  type: String
+  url: String
+  variantIdentifier: String
+  referenceDatabase: [ReferenceDatabase]
+}
+
+type ReferenceMolecule implements ReferenceEntity {
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  abbreviation: String
+  approvalSource: [String]
+  approved: Boolean
+  chain: [String]
+  checksum: String
+  comment: [String]
+  databaseName: String
+  description: [String]
+  displayName: String
+  formula: String
+  geneName: [String]
+  inn: String
+  identifier: String
+  isSequenceChanged: Boolean
+  keyword: [String]
+  name: [String]
+  otherIdentifier: [String]
+  schemaClass: String
+  secondaryIdentifier: [String]
+  sequenceLength: Int
+  trivial: Boolean
+  type: String
+  url: String
+  variantIdentifier: String
+}
+
+# ----- Just Types -----
+type ReferenceDatabase {
+  # type ReferenceDatabase is used by type "ReferenceGeneProduct"
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  accessUrl: String
+  displayName: String
+  name: [String]
+  schemaClass: String
+}
+
+type Catalyst {
+  # type Catalyst is used by type "Reaction"
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  displayName: String
+  stId: String
+  schemaClass: String
+  physicalEntity: [PhysicalEntity]
+  activeUnit: [PhysicalEntity]
+}
+
+type Regulation {
+  # type Regulation is used by type "Reaction"
+  id: ID
+  dbId: Int
+  displayName: String
+  stId: String
+  schemaClass: String
+  dbTypes: [String]
+  regulator: [PhysicalEntity]
+  summation: [Summation]
+}
+
+type Summation {
+  # type Summation is used by type "Regulation"
+  id: ID
+  dbId: Int
+  dbTypes: [String]
+  displayName: String
+  stId: String
+  schemaClass: String
+  text: String
+}
+
+
