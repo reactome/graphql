@@ -541,7 +541,7 @@ An inline-fragment is used when an interface type is returned by a query which c
 
 Currently, to access GraphQL playground the user has to do a whole bunch of local setup i.e. to download Docker and NodeJS softwares, install NPM packages, download Reactome database, etc. 
 
-So, the future work of this project would involve is to host these services directly to Heroku, Netlify or any other service providers and make available a direct link of Reactome's GraphQL Playground. 
+So, the future work of this project would involve is to host these services directly to Heroku, Netlify or any other service providers and make available a direct link of Reactome's GraphQL Playground ready to query required data. 
 
 For example, when a user visits **reactome.org/graphql** this should directly open Reactome's GraphQL Playground interface. 
 
